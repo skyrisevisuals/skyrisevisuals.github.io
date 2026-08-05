@@ -1,38 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
 
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <title>SkyRise Visuals | Photography</title>
 
 
-<link rel="icon" href="favicon.ico">
+<link rel="icon" href="./favicon.ico">
 
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./style.css">
 
 
 </head>
 
 
-
 <body>
-
-
-
 
 
 <!-- ================= HEADER ================= -->
 
-
 <header>
-
 
 <div class="logo">
 
@@ -41,12 +33,9 @@ SKYRISE <span>VISUALS</span>
 </div>
 
 
-
-
 <nav>
 
-
-<a href="portfolio.html">
+<a href="./portfolio.html">
 Portfolio
 </a>
 
@@ -56,20 +45,14 @@ About
 </a>
 
 
-<a href="contact.html">
+<a href="./contact.html">
 Contact
 </a>
-
-
 
 </nav>
 
 
 </header>
-
-
-
-
 
 
 
@@ -84,10 +67,7 @@ Contact
 <div class="overlay"></div>
 
 
-
-
 <div class="hero-text hidden">
-
 
 
 <p class="small">
@@ -95,9 +75,6 @@ Contact
 PHOTOGRAPHY • VISUAL STORYTELLING • CREATIVE WORK
 
 </p>
-
-
-
 
 
 <h1>
@@ -108,9 +85,6 @@ Visuals
 </h1>
 
 
-
-
-
 <p>
 
 Capturing unique perspectives through photography,
@@ -119,24 +93,17 @@ creative visuals, and cinematic storytelling.
 </p>
 
 
-
-
-
-<a href="portfolio.html" class="button">
+<a href="./portfolio.html" class="button">
 
 VIEW PORTFOLIO
 
 </a>
 
 
-
-
 </div>
 
 
 </section>
-
-
 
 
 
@@ -150,7 +117,6 @@ VIEW PORTFOLIO
 <section class="featured-showcase">
 
 
-
 <h2 class="hidden">
 
 Featured Work
@@ -159,17 +125,16 @@ Featured Work
 
 
 
-
-
 <div class="featured-stack" id="featured">
+
+
+<!-- Random photos load here -->
 
 
 </div>
 
 
-
 </section>
-
 
 
 
@@ -184,14 +149,11 @@ Featured Work
 <section class="portfolio-cta hidden">
 
 
-
 <h2>
 
 Explore The Full Gallery
 
 </h2>
-
-
 
 
 <p class="about-text">
@@ -203,18 +165,14 @@ from the portfolio gallery.
 </p>
 
 
-
-
-<a href="portfolio.html" class="button">
+<a href="./portfolio.html" class="button">
 
 VIEW PORTFOLIO
 
 </a>
 
 
-
 </section>
-
 
 
 
@@ -229,15 +187,11 @@ VIEW PORTFOLIO
 <section id="about" class="hidden">
 
 
-
 <h2>
 
 About
 
 </h2>
-
-
-
 
 
 <p class="about-text">
@@ -249,9 +203,7 @@ and creative storytelling.
 </p>
 
 
-
 </section>
-
 
 
 
@@ -266,7 +218,6 @@ and creative storytelling.
 <section id="contact" class="hidden">
 
 
-
 <h2>
 
 Connect
@@ -275,12 +226,10 @@ Connect
 
 
 
-
 <div class="contact-links">
 
 
-
-<a class="button" href="contact.html">
+<a class="button" href="./contact.html">
 
 CONTACT
 
@@ -288,12 +237,8 @@ CONTACT
 
 
 
-
-
 <a class="button"
-
 href="https://www.instagram.com/skyrisevisuals/"
-
 target="_blank">
 
 INSTAGRAM
@@ -301,13 +246,10 @@ INSTAGRAM
 </a>
 
 
-
 </div>
 
 
-
 </section>
-
 
 
 
@@ -338,299 +280,12 @@ INSTAGRAM
 
 
 
-
 <!-- ================= JAVASCRIPT ================= -->
 
 
-<script>
-
-
-
-// ================= RANDOM FEATURED PHOTOS =================
-
-
-
-fetch("photos.json")
-
-
-.then(response => {
-
-
-
-    if(!response.ok){
-
-        throw new Error("photos.json failed to load");
-
-    }
-
-
-
-    return response.json();
-
-
-
-})
-
-
-
-.then(photos => {
-
-
-
-    // Randomize photos
-
-
-    photos.sort(() => Math.random() - 0.5);
-
-
-
-
-    const featured = document.getElementById("featured");
-
-
-
-    if(!featured){
-
-        console.error("Featured section missing");
-
-        return;
-
-    }
-
-
-
-
-
-    const selected = photos.slice(0,3);
-
-
-
-
-
-    featured.innerHTML = `
-
-
-
-    <img
-
-    class="feature-photo left"
-
-    src="images/portfolio/${selected[0]}"
-
-    alt="SkyRise Visuals Photography">
-
-
-
-
-
-    <img
-
-    class="feature-photo center"
-
-    src="images/portfolio/${selected[1]}"
-
-    alt="SkyRise Visuals Photography">
-
-
-
-
-
-    <img
-
-    class="feature-photo right"
-
-    src="images/portfolio/${selected[2]}"
-
-    alt="SkyRise Visuals Photography">
-
-
-
-    `;
-
-
-
-
-
-
-    // Wait for images before animation
-
-
-    const images = featured.querySelectorAll("img");
-
-
-    let loaded = 0;
-
-
-
-
-    images.forEach(image => {
-
-
-
-        image.onload = () => {
-
-
-
-            loaded++;
-
-
-
-
-            if(loaded === images.length){
-
-
-                featured.classList.add("show");
-
-
-            }
-
-
-        };
-
-
-
-
-
-        image.onerror = () => {
-
-
-            console.error(
-
-                "Image missing:",
-
-                image.src
-
-            );
-
-
-        };
-
-
-
-    });
-
-
-
-})
-
-
-
-.catch(error => {
-
-
-
-console.error(
-
-"Featured gallery error:",
-
-error
-
-);
-
-
-
-});
-
-
-
-
-
-
-
-
-
-// ================= SCROLL ANIMATION =================
-
-
-
-const hiddenElements = document.querySelectorAll(
-
-".hidden, .hidden-left, .hidden-right"
-
-);
-
-
-
-
-
-if("IntersectionObserver" in window){
-
-
-
-const observer = new IntersectionObserver((entries)=>{
-
-
-
-entries.forEach(entry=>{
-
-
-
-if(entry.isIntersecting){
-
-
-
-entry.target.classList.add("show");
-
-
-
-observer.unobserve(entry.target);
-
-
-
-}
-
-
-
-});
-
-
-
-},{
-
-threshold:.15
-
-});
-
-
-
-
-
-
-hiddenElements.forEach(element=>{
-
-
-observer.observe(element);
-
-
-});
-
-
-
-}else{
-
-
-
-hiddenElements.forEach(element=>{
-
-
-element.classList.add("show");
-
-
-});
-
-
-
-}
-
-
-
-</script>
-
-
-
+<script src="./script.js"></script>
 
 
 </body>
-
 
 </html>
