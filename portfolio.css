@@ -1,12 +1,31 @@
 /* ================= PORTFOLIO PAGE ================= */
 
 
-.portfolio-page{
+html,
+body{
 
-    padding:140px 8%;
+    background:#050505;
+
+    color:white;
+
+    min-height:100%;
 
 }
 
+
+
+
+.portfolio-page{
+
+    padding:140px 8% 80px;
+
+    background:#050505;
+
+}
+
+
+
+/* ================= TITLE ================= */
 
 
 .portfolio-page h1{
@@ -18,8 +37,6 @@
     font-weight:800;
 
 }
-
-
 
 
 
@@ -37,8 +54,6 @@
     gap:30px;
 
 }
-
-
 
 
 
@@ -82,8 +97,6 @@
 
 
 
-
-
 /* ================= IMAGE ================= */
 
 
@@ -102,8 +115,6 @@
 
 
 
-
-
 .photo-card:hover img{
 
     transform:scale(1.08);
@@ -114,9 +125,7 @@
 
 
 
-
-
-/* ================= DARK IMAGE OVERLAY ================= */
+/* ================= IMAGE OVERLAY ================= */
 
 
 .photo-card::after{
@@ -132,9 +141,9 @@
 
         to bottom,
 
-        transparent 60%,
+        transparent 55%,
 
-        rgba(0,0,0,.55)
+        rgba(0,0,0,.65)
 
     );
 
@@ -142,8 +151,6 @@
     pointer-events:none;
 
 }
-
-
 
 
 
@@ -175,7 +182,7 @@
     text-decoration:none;
 
 
-    font-weight:600;
+    font-weight:700;
 
 
     font-size:14px;
@@ -202,9 +209,20 @@
 
 
 
+/* ================= HEADER FIX ON PORTFOLIO ================= */
 
 
-/* ================= STAGGER EFFECT ================= */
+header{
+
+    background-color:#050505;
+
+}
+
+
+
+
+
+/* ================= STAGGER ANIMATION ================= */
 
 
 .photo-card:nth-child(3n+1){
@@ -214,11 +232,13 @@
 }
 
 
+
 .photo-card:nth-child(3n+2){
 
     transition-delay:.2s;
 
 }
+
 
 
 .photo-card:nth-child(3n+3){
@@ -231,58 +251,42 @@
 
 
 
-
-
-/* ================= PORTFOLIO CTA ================= */
-
-
-.portfolio-cta{
-
-    text-align:center;
-
-}
-
-
-
-.portfolio-cta .about-text{
-
-    margin:0 auto 40px;
-
-}
-
-
-
-
-
-
-
 /* ================= MOBILE ================= */
 
 
 @media(max-width:900px){
 
 
-    .photo-grid{
+.photo-grid{
 
-        grid-template-columns:1fr;
+    grid-template-columns:1fr;
 
-    }
-
-
-
-    .portfolio-page h1{
-
-        font-size:45px;
-
-    }
+}
 
 
 
-    .photo-card{
+.portfolio-page{
 
-        height:400px;
+    padding:120px 5% 60px;
 
-    }
+}
+
+
+
+.portfolio-page h1{
+
+    font-size:45px;
+
+}
+
+
+
+.photo-card{
+
+    height:400px;
+
+}
+
 
 
 }
