@@ -13,7 +13,7 @@
 
     font-size:70px;
 
-    margin-bottom:50px;
+    margin-bottom:60px;
 
     font-weight:800;
 
@@ -53,11 +53,27 @@
 
     overflow:hidden;
 
-    border-radius:18px;
+    border-radius:20px;
 
-    height:450px;
+    height:500px;
 
     background:#111;
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+    transition:1s ease;
+
+}
+
+
+
+.photo-card.show{
+
+    opacity:1;
+
+    transform:translateY(0);
 
 }
 
@@ -71,7 +87,7 @@
 
     object-fit:cover;
 
-    transition:.6s ease;
+    transition:.7s ease;
 
 }
 
@@ -106,7 +122,7 @@
     color:black;
 
 
-    padding:12px 25px;
+    padding:12px 28px;
 
 
     border-radius:30px;
@@ -115,7 +131,7 @@
     text-decoration:none;
 
 
-    font-weight:600;
+    font-weight:700;
 
 
     font-size:14px;
@@ -123,6 +139,8 @@
 
     transition:.3s ease;
 
+
+    z-index:2;
 
 }
 
@@ -132,7 +150,7 @@
 
     transform:translateY(-5px);
 
-    background:#aaa;
+    background:#ccc;
 
 }
 
@@ -142,26 +160,25 @@
 
 
 
-/* ================= PHOTO FADE ANIMATION ================= */
+/* ================= IMAGE OVERLAY ================= */
 
 
-.photo-card.hidden{
+.photo-card::after{
 
-    opacity:0;
+    content:"";
 
-    transform:translateY(50px);
+    position:absolute;
 
-    transition:1s ease;
-
-}
+    inset:0;
 
 
+    background:linear-gradient(
+        transparent,
+        rgba(0,0,0,.35)
+    );
 
-.photo-card.show{
 
-    opacity:1;
-
-    transform:translateY(0);
+    pointer-events:none;
 
 }
 
@@ -200,6 +217,7 @@
 @media(max-width:900px){
 
 
+
 .photo-grid{
 
     grid-template-columns:1fr;
@@ -218,9 +236,10 @@
 
 .photo-card{
 
-    height:400px;
+    height:420px;
 
 }
+
 
 
 }
