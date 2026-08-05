@@ -9,7 +9,6 @@
 
 <title>SkyRise Visuals | Portfolio</title>
 
-
 <link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet" href="portfolio.css">
@@ -35,6 +34,7 @@ SKYRISE <span>VISUALS</span>
 
 
 <nav>
+
 
 <a href="index.html">
 Home
@@ -132,7 +132,6 @@ threshold:.15
 
 
 
-
 fetch("photos.json")
 
 
@@ -143,6 +142,7 @@ fetch("photos.json")
 
 
 
+
 photos.forEach(photo => {
 
 
@@ -150,11 +150,13 @@ photos.forEach(photo => {
 const card = document.createElement("div");
 
 
-card.className = "photo-card hidden";
+
+card.classList.add("photo-card");
 
 
 
 card.innerHTML = `
+
 
 
 <img
@@ -187,6 +189,7 @@ Download
 
 
 
+
 gallery.appendChild(card);
 
 
@@ -202,13 +205,19 @@ observer.observe(card);
 })
 
 
+
 .catch(error => {
 
 
+
 console.error(
+
 "Gallery loading error:",
+
 error
+
 );
+
 
 
 });
