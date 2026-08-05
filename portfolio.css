@@ -84,6 +84,9 @@
 
 
 
+/* ================= IMAGE ================= */
+
+
 .photo-card img{
 
     width:100%;
@@ -101,6 +104,39 @@
 .photo-card:hover img{
 
     transform:scale(1.08);
+
+}
+
+
+
+
+
+
+
+/* ================= IMAGE OVERLAY ================= */
+
+
+.photo-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+
+    background:linear-gradient(
+
+        to bottom,
+
+        transparent,
+
+        rgba(0,0,0,.45)
+
+    );
+
+
+    pointer-events:none;
 
 }
 
@@ -165,85 +201,26 @@
 
 
 
-/* ================= IMAGE DARK OVERLAY ================= */
+/* ================= STAGGER ANIMATION ================= */
 
 
-.photo-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-
-    background:linear-gradient(
-
-        to bottom,
-
-        transparent,
-
-        rgba(0,0,0,.35)
-
-    );
-
-
-    pointer-events:none;
-
-}
-
-
-
-
-
-
-
-/* ================= PHOTO STAGGER ANIMATION ================= */
-
-
-.photo-card:nth-child(1){
+.photo-card:nth-child(3n+1){
 
     transition-delay:.1s;
 
 }
 
 
-
-.photo-card:nth-child(2){
+.photo-card:nth-child(3n+2){
 
     transition-delay:.2s;
 
 }
 
 
-
-.photo-card:nth-child(3){
+.photo-card:nth-child(3n+3){
 
     transition-delay:.3s;
-
-}
-
-
-
-.photo-card:nth-child(4){
-
-    transition-delay:.4s;
-
-}
-
-
-
-.photo-card:nth-child(5){
-
-    transition-delay:.5s;
-
-}
-
-
-
-.photo-card:nth-child(6){
-
-    transition-delay:.6s;
 
 }
 
@@ -280,7 +257,6 @@
 
 
 @media(max-width:900px){
-
 
 
     .photo-grid{
