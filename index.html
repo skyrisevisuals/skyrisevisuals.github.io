@@ -48,10 +48,11 @@
 
 <section class="hero">
 
+
 <div class="overlay"></div>
 
 
-<div class="hero-text">
+<div class="hero-text hidden">
 
 
 <p class="small">
@@ -99,7 +100,7 @@ FREE DOWNLOADS
 <section id="portfolio">
 
 
-<h2>
+<h2 class="hidden">
 Portfolio
 </h2>
 
@@ -109,7 +110,7 @@ Portfolio
 
 
 
-<div class="card large reveal">
+<div class="card large hidden">
 
 <img id="portfolio1" src="" alt="SkyRise Visuals Photography">
 
@@ -117,7 +118,7 @@ Portfolio
 
 
 
-<div class="card reveal">
+<div class="card hidden">
 
 <img id="portfolio2" src="" alt="SkyRise Visuals Photography">
 
@@ -125,7 +126,7 @@ Portfolio
 
 
 
-<div class="card reveal">
+<div class="card hidden">
 
 <img id="portfolio3" src="" alt="SkyRise Visuals Photography">
 
@@ -133,7 +134,7 @@ Portfolio
 
 
 
-<div class="card reveal">
+<div class="card hidden">
 
 <img id="portfolio4" src="" alt="SkyRise Visuals Photography">
 
@@ -160,7 +161,7 @@ Portfolio
 <section id="downloads" class="downloads-section">
 
 
-<div class="section-header">
+<div class="section-header hidden">
 
 
 <h2>
@@ -187,17 +188,13 @@ creative releases.
 
 
 
+<article class="download-card hidden">
 
 
-<article class="download-card reveal">
-
-
-<div class="download-image">
-
-<img src="images/drone-wallpaper.jpg"
+<img 
+src="images/drone-wallpaper.jpg"
 alt="Photography wallpaper">
 
-</div>
 
 
 <div class="download-content">
@@ -213,11 +210,12 @@ Cinematic photography wallpapers for your devices.
 </p>
 
 
-<a class="button"
+<a 
+class="button"
 href="downloads/drone-wallpaper.jpg"
 download>
 
-Download
+DOWNLOAD
 
 </a>
 
@@ -233,15 +231,13 @@ Download
 
 
 
-<article class="download-card reveal">
+<article class="download-card hidden">
 
 
-<div class="download-image">
+<img 
+src="images/car-wallpaper.jpg"
+alt="Automotive photography wallpaper">
 
-<img src="images/car-wallpaper.jpg"
-alt="Automotive photography">
-
-</div>
 
 
 <div class="download-content">
@@ -257,11 +253,12 @@ High-resolution automotive photography.
 </p>
 
 
-<a class="button"
+<a 
+class="button"
 href="downloads/car-wallpaper.jpg"
 download>
 
-Download
+DOWNLOAD
 
 </a>
 
@@ -277,23 +274,20 @@ Download
 
 
 
+<article class="download-card hidden">
 
-<article class="download-card reveal">
 
+<img 
+src="images/city-wallpaper.jpg"
+alt="City photography wallpaper">
 
-<div class="download-image">
-
-<img src="images/city-wallpaper.jpg"
-alt="City photography">
-
-</div>
 
 
 <div class="download-content">
 
 
 <h3>
-Aerial City Collection
+Aerial Collection
 </h3>
 
 
@@ -302,11 +296,12 @@ Cinematic skyline and aerial photography.
 </p>
 
 
-<a class="button"
+<a 
+class="button"
 href="downloads/city-wallpaper.jpg"
 download>
 
-Download
+DOWNLOAD
 
 </a>
 
@@ -315,8 +310,6 @@ Download
 
 
 </article>
-
-
 
 
 
@@ -336,7 +329,7 @@ Download
 <!-- ================= ABOUT ================= -->
 
 
-<section id="about">
+<section id="about" class="hidden">
 
 
 <h2>
@@ -367,7 +360,7 @@ automotive culture, and creative storytelling.
 <!-- ================= CONTACT ================= -->
 
 
-<section id="contact">
+<section id="contact" class="hidden">
 
 
 <h2>
@@ -379,7 +372,8 @@ Connect
 <div class="contact-links">
 
 
-<a class="button"
+<a 
+class="button"
 href="https://www.instagram.com/skyrisevisuals/"
 target="_blank">
 
@@ -389,8 +383,8 @@ Instagram
 
 
 
-
-<a class="button"
+<a 
+class="button"
 href="https://ko-fi.com/skyrisevisuals"
 target="_blank">
 
@@ -440,20 +434,26 @@ Support
 <script>
 
 
-// Scroll animations
-
-const reveals = document.querySelectorAll(".reveal");
+// Fade Up Animation
 
 
-const observer = new IntersectionObserver(entries => {
+const hiddenElements = document.querySelectorAll(".hidden");
 
 
-entries.forEach(entry => {
+const observer = new IntersectionObserver((entries)=>{
+
+
+entries.forEach((entry)=>{
 
 
 if(entry.isIntersecting){
 
+
 entry.target.classList.add("show");
+
+
+observer.unobserve(entry.target);
+
 
 }
 
@@ -461,16 +461,28 @@ entry.target.classList.add("show");
 });
 
 
+},{
+
+threshold:0.15
+
 });
 
 
-reveals.forEach(el => observer.observe(el));
+
+hiddenElements.forEach((el)=>{
+
+observer.observe(el);
+
+});
 
 
 
 
 
-// Random portfolio images
+
+
+// Random Portfolio Images
+
 
 const photos = [
 
@@ -496,13 +508,9 @@ const photos = [
 
 
 
-// Shuffle photos
-
-photos.sort(() => Math.random() - 0.5);
+photos.sort(()=>Math.random()-0.5);
 
 
-
-// Load random images
 
 document.getElementById("portfolio1").src = photos[0];
 
@@ -515,7 +523,6 @@ document.getElementById("portfolio4").src = photos[3];
 
 
 </script>
-
 
 
 </body>
