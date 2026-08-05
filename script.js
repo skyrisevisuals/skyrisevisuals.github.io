@@ -33,7 +33,6 @@ fetch("photos.json")
 
 
 
-
     featured.innerHTML = `
 
 
@@ -57,12 +56,50 @@ fetch("photos.json")
     alt="SkyRise Visuals Photography">
 
 
-
     `;
 
 
 
-    featured.classList.add("show");
+    // Wait for images before animation
+
+    const images = featured.querySelectorAll("img");
+
+    let loaded = 0;
+
+
+
+    images.forEach(img => {
+
+
+        img.onload = () => {
+
+
+            loaded++;
+
+
+            if(loaded === images.length){
+
+
+                featured.classList.add("show");
+
+
+            }
+
+
+        };
+
+
+
+        img.onerror = () => {
+
+
+            console.error("Image missing:", img.src);
+
+
+        };
+
+
+    });
 
 
 
@@ -72,10 +109,10 @@ fetch("photos.json")
 .catch(error => {
 
 
-console.error(
-"Featured gallery error:",
-error
-);
+    console.error(
+        "Featured gallery error:",
+        error
+    );
 
 
 });
