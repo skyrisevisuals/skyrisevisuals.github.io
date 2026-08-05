@@ -13,10 +13,9 @@ fetch("photos.json")
 .then(photos => {
 
 
+    // Randomize photos
 
-    // Shuffle photos randomly
-
-    photos = photos.sort(() => Math.random() - 0.5);
+    photos.sort(() => Math.random() - 0.5);
 
 
 
@@ -24,7 +23,17 @@ fetch("photos.json")
 
 
 
-    // Pick 3 random photos
+    if(!featured){
+
+        console.error("Featured container not found");
+
+        return;
+
+    }
+
+
+
+    // Pick 3 photos
 
     const selected = photos.slice(0,3);
 
@@ -33,65 +42,46 @@ fetch("photos.json")
     featured.innerHTML = `
 
 
-
-    <img
-
-    class="feature-photo left"
-
-    src="images/portfolio/${selected[0]}"
-
-    alt="SkyRise Visuals Photography">
+        <img 
+        class="feature-photo left"
+        src="images/portfolio/${selected[0]}"
+        alt="SkyRise Visuals Photography">
 
 
 
-
-
-    <img
-
-    class="feature-photo center"
-
-    src="images/portfolio/${selected[1]}"
-
-    alt="SkyRise Visuals Photography">
+        <img 
+        class="feature-photo center"
+        src="images/portfolio/${selected[1]}"
+        alt="SkyRise Visuals Photography">
 
 
 
-
-
-    <img
-
-    class="feature-photo right"
-
-    src="images/portfolio/${selected[2]}"
-
-    alt="SkyRise Visuals Photography">
-
+        <img 
+        class="feature-photo right"
+        src="images/portfolio/${selected[2]}"
+        alt="SkyRise Visuals Photography">
 
 
     `;
 
 
 
-    // Wait for images then fade in
+    // Wait until all images load
 
     const images = featured.querySelectorAll("img");
-
 
 
     let loaded = 0;
 
 
 
-    images.forEach(img => {
+    images.forEach(image => {
 
 
-
-        img.onload = () => {
-
+        image.onload = () => {
 
 
             loaded++;
-
 
 
             if(loaded === images.length){
@@ -117,13 +107,13 @@ fetch("photos.json")
 .catch(error => {
 
 
-console.error(
+    console.error(
 
-"Featured gallery error:",
+        "Featured gallery error:",
 
-error
+        error
 
-);
+    );
 
 
 });
@@ -134,43 +124,42 @@ error
 
 
 
-// ================= FADE UP ANIMATION =================
+// ================= SCROLL ANIMATIONS =================
 
 
 
-const hiddenElements = document.querySelectorAll(".hidden");
+const hiddenElements = document.querySelectorAll(
+
+    ".hidden, .hidden-left, .hidden-right"
+
+);
 
 
 
 const observer = new IntersectionObserver((entries)=>{
 
 
-entries.forEach((entry)=>{
+    entries.forEach((entry)=>{
 
 
-
-if(entry.isIntersecting){
-
+        if(entry.isIntersecting){
 
 
-entry.target.classList.add("show");
+            entry.target.classList.add("show");
 
 
-
-observer.unobserve(entry.target);
-
+            observer.unobserve(entry.target);
 
 
-}
+        }
 
 
-
-});
+    });
 
 
 },{
 
-threshold:.15
+    threshold:.15
 
 });
 
@@ -181,7 +170,7 @@ threshold:.15
 hiddenElements.forEach((el)=>{
 
 
-observer.observe(el);
+    observer.observe(el);
 
 
 });
