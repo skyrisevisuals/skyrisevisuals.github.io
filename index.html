@@ -14,15 +14,17 @@ fetch("photos.json")
 
 
 
-    // shuffle photos
+    // Shuffle photos randomly
 
-    photos.sort(() => Math.random() - 0.5);
+    photos = photos.sort(() => Math.random() - 0.5);
 
 
 
     const featured = document.getElementById("featured");
 
 
+
+    // Pick 3 random photos
 
     const selected = photos.slice(0,3);
 
@@ -32,27 +34,36 @@ fetch("photos.json")
 
 
 
-    <img 
+    <img
+
     class="feature-photo left"
+
     src="images/portfolio/${selected[0]}"
+
     alt="SkyRise Visuals Photography">
 
 
 
 
 
-    <img 
+    <img
+
     class="feature-photo center"
+
     src="images/portfolio/${selected[1]}"
+
     alt="SkyRise Visuals Photography">
 
 
 
 
 
-    <img 
+    <img
+
     class="feature-photo right"
+
     src="images/portfolio/${selected[2]}"
+
     alt="SkyRise Visuals Photography">
 
 
@@ -61,9 +72,41 @@ fetch("photos.json")
 
 
 
-    // activate fade after images load
+    // Wait for images then fade in
 
-    featured.classList.add("show");
+    const images = featured.querySelectorAll("img");
+
+
+
+    let loaded = 0;
+
+
+
+    images.forEach(img => {
+
+
+
+        img.onload = () => {
+
+
+
+            loaded++;
+
+
+
+            if(loaded === images.length){
+
+
+                featured.classList.add("show");
+
+
+            }
+
+
+        };
+
+
+    });
 
 
 
@@ -75,8 +118,11 @@ fetch("photos.json")
 
 
 console.error(
+
 "Featured gallery error:",
+
 error
+
 );
 
 
@@ -97,7 +143,6 @@ const hiddenElements = document.querySelectorAll(".hidden");
 
 
 const observer = new IntersectionObserver((entries)=>{
-
 
 
 entries.forEach((entry)=>{
@@ -121,7 +166,6 @@ observer.unobserve(entry.target);
 
 
 });
-
 
 
 },{
