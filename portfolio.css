@@ -62,7 +62,7 @@
 
     opacity:0;
 
-    transform:translateY(50px);
+    transform:translateY(60px);
 
     transition:1s ease;
 
@@ -101,6 +101,9 @@
 
 
 
+
+
+
 .photo-card:hover img{
 
     transform:scale(1.08);
@@ -113,7 +116,7 @@
 
 
 
-/* ================= IMAGE OVERLAY ================= */
+/* ================= DARK IMAGE OVERLAY ================= */
 
 
 .photo-card::after{
@@ -129,9 +132,9 @@
 
         to bottom,
 
-        transparent,
+        transparent 60%,
 
-        rgba(0,0,0,.45)
+        rgba(0,0,0,.55)
 
     );
 
@@ -178,10 +181,10 @@
     font-size:14px;
 
 
+    z-index:5;
+
+
     transition:.3s ease;
-
-
-    z-index:3;
 
 }
 
@@ -201,7 +204,7 @@
 
 
 
-/* ================= STAGGER ANIMATION ================= */
+/* ================= STAGGER EFFECT ================= */
 
 
 .photo-card:nth-child(3n+1){
