@@ -1,3 +1,64 @@
+// ================= RANDOM HEADER BACKGROUND =================
+
+
+fetch("./photos.json")
+
+.then(response => {
+
+    if(!response.ok){
+
+        throw new Error("photos.json failed");
+
+    }
+
+    return response.json();
+
+})
+
+
+.then(photos => {
+
+
+    const header = document.querySelector("header");
+
+
+    if(header && photos.length > 0){
+
+
+        const randomHeaderPhoto =
+        photos[Math.floor(Math.random() * photos.length)];
+
+
+
+        header.style.backgroundImage =
+        `url("./images/portfolio/${randomHeaderPhoto}")`;
+
+
+    }
+
+
+
+})
+
+.catch(error => {
+
+
+    console.error(
+        "Header background error:",
+        error
+    );
+
+
+});
+
+
+
+
+
+
+
+
+
 // ================= RANDOM FEATURED PHOTOS =================
 
 
@@ -36,7 +97,8 @@ fetch("./photos.json")
 
 
 
-    // shuffle photos
+
+    // Shuffle photos
 
     photos.sort(() => Math.random() - 0.5);
 
@@ -49,26 +111,33 @@ fetch("./photos.json")
     featured.innerHTML = `
 
 
-    <img 
+    <img
     class="feature-photo left"
     src="./images/portfolio/${selected[0]}"
     alt="SkyRise Visuals Photography">
 
 
-    <img 
+
+    <img
     class="feature-photo center"
     src="./images/portfolio/${selected[1]}"
     alt="SkyRise Visuals Photography">
 
 
-    <img 
+
+    <img
     class="feature-photo right"
     src="./images/portfolio/${selected[2]}"
     alt="SkyRise Visuals Photography">
 
 
+
     `;
 
+
+
+
+    // Wait for images before showing
 
 
     const images = featured.querySelectorAll("img");
@@ -78,26 +147,31 @@ fetch("./photos.json")
 
 
 
+    function finishLoading(){
+
+
+        loaded++;
+
+
+        if(loaded === images.length){
+
+
+            featured.classList.add("show");
+
+
+        }
+
+
+    }
+
+
+
+
     images.forEach(img => {
 
 
 
-        img.onload = () => {
-
-
-            loaded++;
-
-
-            if(loaded >= images.length){
-
-
-                featured.classList.add("show");
-
-
-            }
-
-
-        };
+        img.onload = finishLoading;
 
 
 
@@ -110,21 +184,11 @@ fetch("./photos.json")
             );
 
 
-            // prevent page getting stuck
-
-            loaded++;
-
-
-            if(loaded >= images.length){
-
-
-                featured.classList.add("show");
-
-
-            }
+            finishLoading();
 
 
         };
+
 
 
     });
@@ -132,6 +196,7 @@ fetch("./photos.json")
 
 
 })
+
 
 
 .catch(error => {
@@ -152,7 +217,8 @@ fetch("./photos.json")
 
 
 
-// ================= SCROLL ANIMATION =================
+
+// ================= SCROLL ANIMATIONS =================
 
 
 const hiddenElements = document.querySelectorAll(
@@ -186,20 +252,22 @@ if("IntersectionObserver" in window){
         });
 
 
-
     },{
 
+
         threshold:.15
+
 
     });
 
 
 
 
-    hiddenElements.forEach(el=>{
+
+    hiddenElements.forEach(element=>{
 
 
-        observer.observe(el);
+        observer.observe(element);
 
 
     });
@@ -209,15 +277,13 @@ if("IntersectionObserver" in window){
 }else{
 
 
+    hiddenElements.forEach(element=>{
 
-    hiddenElements.forEach(el=>{
 
-
-        el.classList.add("show");
+        element.classList.add("show");
 
 
     });
-
 
 
 }
