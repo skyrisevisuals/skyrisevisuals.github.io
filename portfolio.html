@@ -9,6 +9,7 @@
 
 <title>SkyRise Visuals | Portfolio</title>
 
+
 <link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet" href="portfolio.css">
@@ -16,7 +17,9 @@
 </head>
 
 
+
 <body>
+
 
 
 <!-- ================= HEADER ================= -->
@@ -56,6 +59,7 @@ Contact
 
 
 
+
 <!-- ================= PORTFOLIO ================= -->
 
 
@@ -67,6 +71,7 @@ Contact
 Portfolio
 
 </h1>
+
 
 
 
@@ -85,6 +90,8 @@ Portfolio
 
 
 
+
+
 <!-- ================= AUTOMATIC PHOTO GALLERY ================= -->
 
 
@@ -95,32 +102,41 @@ const gallery = document.getElementById("gallery");
 
 
 
-// Scroll animation
+
+// ================= SCROLL ANIMATION =================
+
+
+const hiddenElements = document.querySelectorAll(
+    ".hidden, .photo-card"
+);
+
+
 
 const observer = new IntersectionObserver((entries)=>{
 
 
-entries.forEach(entry=>{
+    entries.forEach((entry)=>{
 
 
-if(entry.isIntersecting){
+        if(entry.isIntersecting){
 
 
-entry.target.classList.add("show");
+            entry.target.classList.add("show");
 
 
-observer.unobserve(entry.target);
+            observer.unobserve(entry.target);
 
 
-}
+        }
 
 
-});
+    });
+
 
 
 },{
 
-threshold:.15
+    threshold:.15
 
 });
 
@@ -128,7 +144,23 @@ threshold:.15
 
 
 
-// Load photos automatically
+
+hiddenElements.forEach((element)=>{
+
+
+    observer.observe(element);
+
+
+});
+
+
+
+
+
+
+
+
+// ================= LOAD PHOTOS =================
 
 
 fetch("photos.json")
@@ -137,88 +169,90 @@ fetch("photos.json")
 .then(response => {
 
 
-if(!response.ok){
-
-throw new Error("photos.json not found");
-
-}
+    if(!response.ok){
 
 
-return response.json();
+        throw new Error("photos.json failed loading");
+
+
+    }
+
+
+    return response.json();
 
 
 })
+
 
 
 .then(photos => {
 
 
 
-photos.forEach((photo,index)=>{
+    photos.forEach((photo,index)=>{
 
 
 
-const card = document.createElement("div");
+        const card = document.createElement("div");
 
 
-card.className = "photo-card";
-
-
-
-card.innerHTML = `
-
-
-<img
-
-src="images/portfolio/${photo}"
-
-alt="SkyRise Visuals Photography"
-
-loading="lazy"
-
-onerror="this.style.display='none'">
-
-
-<a
-
-class="download-btn"
-
-href="images/portfolio/${photo}"
-
-download>
-
-
-Download
-
-
-</a>
-
-
-`;
+        card.classList.add(
+            "photo-card"
+        );
 
 
 
+        card.innerHTML = `
 
 
-gallery.appendChild(card);
+        <img
+
+        src="images/portfolio/${photo}"
+
+        alt="SkyRise Visuals Photography"
+
+        loading="lazy">
+
+
+        <a
+
+        class="download-btn"
+
+        href="images/portfolio/${photo}"
+
+        download>
+
+
+        Download
+
+
+        </a>
+
+
+        `;
+
+
+
+        gallery.appendChild(card);
 
 
 
 
-// stagger animation
+
+        // stagger reveal
 
 
-setTimeout(()=>{
+        setTimeout(()=>{
 
 
-observer.observe(card);
+            observer.observe(card);
 
 
-}, index * 80);
+        }, index * 100);
 
 
 
-});
+    });
 
 
 
@@ -229,13 +263,13 @@ observer.observe(card);
 .catch(error=>{
 
 
-console.error(
+    console.error(
 
-"Gallery loading error:",
+        "Gallery loading error:",
 
-error
+        error
 
-);
+    );
 
 
 });
@@ -243,6 +277,8 @@ error
 
 
 </script>
+
+
 
 
 
