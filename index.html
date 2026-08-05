@@ -12,6 +12,9 @@
 <title>SkyRise Visuals | Photography</title>
 
 
+<link rel="icon" href="favicon.ico">
+
+
 <link rel="stylesheet" href="style.css">
 
 
@@ -20,6 +23,7 @@
 
 
 <body>
+
 
 
 
@@ -70,6 +74,7 @@ Contact
 
 
 
+
 <!-- ================= HERO ================= -->
 
 
@@ -77,6 +82,7 @@ Contact
 
 
 <div class="overlay"></div>
+
 
 
 
@@ -93,12 +99,14 @@ PHOTOGRAPHY • VISUAL STORYTELLING • CREATIVE WORK
 
 
 
+
 <h1>
 
 SkyRise<br>
 Visuals
 
 </h1>
+
 
 
 
@@ -113,11 +121,13 @@ creative visuals, and cinematic storytelling.
 
 
 
+
 <a href="portfolio.html" class="button">
 
 VIEW PORTFOLIO
 
 </a>
+
 
 
 
@@ -229,6 +239,7 @@ About
 
 
 
+
 <p class="about-text">
 
 SkyRise Visuals creates cinematic photography
@@ -274,6 +285,7 @@ Connect
 CONTACT
 
 </a>
+
 
 
 
@@ -327,7 +339,7 @@ INSTAGRAM
 
 
 
-<!-- ================= SCRIPTS ================= -->
+<!-- ================= JAVASCRIPT ================= -->
 
 
 <script>
@@ -341,69 +353,19 @@ INSTAGRAM
 fetch("photos.json")
 
 
-.then(response => response.json())
-
-
-.then(photos => {
+.then(response => {
 
 
 
-photos.sort(() => Math.random() - 0.5);
+    if(!response.ok){
+
+        throw new Error("photos.json failed to load");
+
+    }
 
 
 
-const featured = document.getElementById("featured");
-
-
-
-const selected = photos.slice(0,3);
-
-
-
-
-featured.innerHTML = `
-
-
-
-<img
-
-class="feature-photo left"
-
-src="images/portfolio/${selected[0]}"
-
-alt="SkyRise Visuals Photography">
-
-
-
-
-
-<img
-
-class="feature-photo center"
-
-src="images/portfolio/${selected[1]}"
-
-alt="SkyRise Visuals Photography">
-
-
-
-
-
-<img
-
-class="feature-photo right"
-
-src="images/portfolio/${selected[2]}"
-
-alt="SkyRise Visuals Photography">
-
-
-
-`;
-
-
-
-featured.classList.add("show");
+    return response.json();
 
 
 
@@ -411,7 +373,150 @@ featured.classList.add("show");
 
 
 
-.catch(error=>{
+.then(photos => {
+
+
+
+    // Randomize photos
+
+
+    photos.sort(() => Math.random() - 0.5);
+
+
+
+
+    const featured = document.getElementById("featured");
+
+
+
+    if(!featured){
+
+        console.error("Featured section missing");
+
+        return;
+
+    }
+
+
+
+
+
+    const selected = photos.slice(0,3);
+
+
+
+
+
+    featured.innerHTML = `
+
+
+
+    <img
+
+    class="feature-photo left"
+
+    src="images/portfolio/${selected[0]}"
+
+    alt="SkyRise Visuals Photography">
+
+
+
+
+
+    <img
+
+    class="feature-photo center"
+
+    src="images/portfolio/${selected[1]}"
+
+    alt="SkyRise Visuals Photography">
+
+
+
+
+
+    <img
+
+    class="feature-photo right"
+
+    src="images/portfolio/${selected[2]}"
+
+    alt="SkyRise Visuals Photography">
+
+
+
+    `;
+
+
+
+
+
+
+    // Wait for images before animation
+
+
+    const images = featured.querySelectorAll("img");
+
+
+    let loaded = 0;
+
+
+
+
+    images.forEach(image => {
+
+
+
+        image.onload = () => {
+
+
+
+            loaded++;
+
+
+
+
+            if(loaded === images.length){
+
+
+                featured.classList.add("show");
+
+
+            }
+
+
+        };
+
+
+
+
+
+        image.onerror = () => {
+
+
+            console.error(
+
+                "Image missing:",
+
+                image.src
+
+            );
+
+
+        };
+
+
+
+    });
+
+
+
+})
+
+
+
+.catch(error => {
+
 
 
 console.error(
@@ -421,6 +526,7 @@ console.error(
 error
 
 );
+
 
 
 });
@@ -442,6 +548,12 @@ const hiddenElements = document.querySelectorAll(
 ".hidden, .hidden-left, .hidden-right"
 
 );
+
+
+
+
+
+if("IntersectionObserver" in window){
 
 
 
@@ -475,11 +587,10 @@ observer.unobserve(entry.target);
 
 },{
 
-
 threshold:.15
 
-
 });
+
 
 
 
@@ -492,6 +603,24 @@ observer.observe(element);
 
 
 });
+
+
+
+}else{
+
+
+
+hiddenElements.forEach(element=>{
+
+
+element.classList.add("show");
+
+
+});
+
+
+
+}
 
 
 
