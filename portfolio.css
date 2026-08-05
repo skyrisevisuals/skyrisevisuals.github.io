@@ -1,27 +1,20 @@
 /* ================= PORTFOLIO PAGE ================= */
 
 
-html,
-body{
-
-    background:#050505;
-
-    color:white;
-
-    min-height:100%;
-
-}
-
-
-
-
 .portfolio-page{
 
     padding:140px 8% 80px;
 
     background:#050505;
 
+    min-height:100vh;
+
+    color:white;
+
 }
+
+
+
 
 
 
@@ -37,6 +30,9 @@ body{
     font-weight:800;
 
 }
+
+
+
 
 
 
@@ -59,6 +55,9 @@ body{
 
 
 
+
+
+
 /* ================= PHOTO CARD ================= */
 
 
@@ -70,18 +69,23 @@ body{
 
     border-radius:18px;
 
+
     height:450px;
+
 
     background:#111;
 
 
     opacity:0;
 
+
     transform:translateY(60px);
+
 
     transition:1s ease;
 
 }
+
 
 
 
@@ -97,6 +101,9 @@ body{
 
 
 
+
+
+
 /* ================= IMAGE ================= */
 
 
@@ -106,7 +113,9 @@ body{
 
     height:100%;
 
+
     object-fit:cover;
+
 
     transition:.6s ease;
 
@@ -125,16 +134,22 @@ body{
 
 
 
-/* ================= IMAGE OVERLAY ================= */
+
+
+
+/* ================= DARK OVERLAY ================= */
 
 
 .photo-card::after{
 
     content:"";
 
+
     position:absolute;
 
+
     inset:0;
+
 
 
     background:linear-gradient(
@@ -148,9 +163,13 @@ body{
     );
 
 
+
     pointer-events:none;
 
 }
+
+
+
 
 
 
@@ -163,32 +182,43 @@ body{
 
     position:absolute;
 
+
     right:20px;
+
 
     bottom:20px;
 
 
+
     background:white;
 
+
     color:black;
+
 
 
     padding:12px 25px;
 
 
+
     border-radius:30px;
+
 
 
     text-decoration:none;
 
 
+
     font-weight:700;
+
 
 
     font-size:14px;
 
 
+
     z-index:5;
+
 
 
     transition:.3s ease;
@@ -197,24 +227,15 @@ body{
 
 
 
+
 .download-btn:hover{
+
 
     transform:translateY(-5px);
 
+
     background:#aaa;
 
-}
-
-
-
-
-
-/* ================= HEADER FIX ON PORTFOLIO ================= */
-
-
-header{
-
-    background-color:#050505;
 
 }
 
@@ -222,7 +243,10 @@ header{
 
 
 
-/* ================= STAGGER ANIMATION ================= */
+
+
+
+/* ================= ANIMATION DELAY ================= */
 
 
 .photo-card:nth-child(3n+1){
@@ -251,10 +275,14 @@ header{
 
 
 
+
+
+
 /* ================= MOBILE ================= */
 
 
 @media(max-width:900px){
+
 
 
 .photo-grid{
