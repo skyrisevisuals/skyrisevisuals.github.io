@@ -9,7 +9,9 @@
 
 <title>SkyRise Visuals | Photography</title>
 
+
 <link rel="stylesheet" href="style.css">
+
 
 </head>
 
@@ -17,7 +19,9 @@
 <body>
 
 
+
 <!-- ================= HEADER ================= -->
+
 
 <header>
 
@@ -34,18 +38,27 @@ SKYRISE <span>VISUALS</span>
 
 
 <a href="portfolio.html">
+
 Portfolio
+
 </a>
+
 
 
 <a href="#about">
+
 About
+
 </a>
+
 
 
 <a href="contact.html">
+
 Contact
+
 </a>
+
 
 
 </nav>
@@ -125,10 +138,11 @@ VIEW PORTFOLIO
 
 
 
-<!-- ================= FEATURED PHOTOS ================= -->
+<!-- ================= FEATURED RANDOM PHOTOS ================= -->
 
 
-<section id="portfolio">
+<section class="featured-showcase">
+
 
 
 <h2 class="hidden">
@@ -139,58 +153,8 @@ Featured Work
 
 
 
-<div class="gallery">
 
-
-
-<div class="card large hidden">
-
-
-<img src="images/portfolio/DSC00355.JPG"
-alt="SkyRise Visuals Photography">
-
-
-</div>
-
-
-
-
-
-<div class="card hidden">
-
-
-<img src="images/portfolio/DSC00356.JPG"
-alt="SkyRise Visuals Photography">
-
-
-</div>
-
-
-
-
-
-<div class="card hidden">
-
-
-<img src="images/portfolio/DSC00357.JPG"
-alt="SkyRise Visuals Photography">
-
-
-</div>
-
-
-
-
-
-<div class="card hidden">
-
-
-<img src="images/portfolio/DSC00361.JPG"
-alt="SkyRise Visuals Photography">
-
-
-</div>
-
+<div class="featured-stack hidden" id="featured">
 
 
 </div>
@@ -359,10 +323,89 @@ INSTAGRAM
 
 
 
-<!-- ================= FADE UP ANIMATION ================= -->
+<!-- ================= RANDOM PHOTO SCRIPT ================= -->
 
 
 <script>
+
+
+fetch("photos.json")
+
+
+.then(response => response.json())
+
+
+.then(photos => {
+
+
+
+photos.sort(() => Math.random() - 0.5);
+
+
+
+const featured = document.getElementById("featured");
+
+
+
+const selected = photos.slice(0,3);
+
+
+
+featured.innerHTML = `
+
+
+
+<img 
+class="feature-photo left"
+src="images/portfolio/${selected[0]}"
+alt="SkyRise Visuals Photography">
+
+
+
+
+
+<img 
+class="feature-photo center"
+src="images/portfolio/${selected[1]}"
+alt="SkyRise Visuals Photography">
+
+
+
+
+
+<img 
+class="feature-photo right"
+src="images/portfolio/${selected[2]}"
+alt="SkyRise Visuals Photography">
+
+
+
+`;
+
+
+
+})
+
+
+
+.catch(error => {
+
+
+console.error(
+"Featured gallery error:",
+error
+);
+
+
+});
+
+
+
+
+
+
+
+// Fade animation
 
 
 const hiddenElements = document.querySelectorAll(".hidden");
@@ -407,7 +450,10 @@ observer.observe(el);
 });
 
 
+
 </script>
+
+
 
 
 
