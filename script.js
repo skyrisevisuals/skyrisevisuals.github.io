@@ -5,17 +5,20 @@ fetch("./photos.json")
 .then(response => {
 
     if(!response.ok){
-        throw new Error("photos.json failed to load");
+
+        throw new Error("photos.json failed");
+
     }
 
     return response.json();
 
 })
 
+
 .then(photos => {
 
 
-    if(!photos || photos.length === 0){
+    if(!photos.length){
 
         throw new Error("No photos found");
 
@@ -23,7 +26,7 @@ fetch("./photos.json")
 
 
 
-    // ================= RANDOM IMAGE FUNCTION =================
+    // ================= RANDOM FUNCTION =================
 
 
     function randomPhoto(){
@@ -38,36 +41,6 @@ fetch("./photos.json")
 
 
 
-    // ================= RANDOM HERO BANNER =================
-
-
-    const hero = document.querySelector(".hero");
-
-
-    if(hero){
-
-
-        const banner = randomPhoto();
-
-
-
-        hero.style.backgroundImage = `
-
-        linear-gradient(
-            rgba(0,0,0,.55),
-            rgba(0,0,0,.85)
-        ),
-
-        url("./images/portfolio/${banner}")
-
-        `;
-
-
-    }
-
-
-
-
 
     // ================= RANDOM HEADER BACKGROUND =================
 
@@ -78,23 +51,65 @@ fetch("./photos.json")
     if(header){
 
 
-        const headerPhoto = randomPhoto();
+        const headerImage = randomPhoto();
 
 
 
         header.style.backgroundImage = `
 
         linear-gradient(
+
             rgba(0,0,0,.75),
+
             rgba(0,0,0,.75)
+
         ),
 
-        url("./images/portfolio/${headerPhoto}")
+        url("./images/portfolio/${headerImage}")
 
         `;
 
 
     }
+
+
+
+
+
+
+
+
+    // ================= RANDOM HERO BANNER =================
+
+
+    const hero = document.querySelector(".hero");
+
+
+    if(hero){
+
+
+        const heroImage = randomPhoto();
+
+
+
+        hero.style.backgroundImage = `
+
+        linear-gradient(
+
+            rgba(0,0,0,.5),
+
+            rgba(0,0,0,.85)
+
+        ),
+
+        url("./images/portfolio/${heroImage}")
+
+        `;
+
+
+    }
+
+
 
 
 
@@ -112,8 +127,10 @@ fetch("./photos.json")
 
 
 
-        let shuffled = [...photos]
-        .sort(() => Math.random() - .5);
+        let shuffled = [...photos];
+
+
+        shuffled.sort(() => Math.random() - .5);
 
 
 
@@ -165,6 +182,7 @@ fetch("./photos.json")
 
 
 
+
         const images = featured.querySelectorAll("img");
 
 
@@ -173,7 +191,7 @@ fetch("./photos.json")
 
 
 
-        function revealFeatured(){
+        function reveal(){
 
 
             loaded++;
@@ -181,9 +199,12 @@ fetch("./photos.json")
 
             if(loaded >= images.length){
 
+
                 featured.classList.add("show");
 
+
             }
+
 
         }
 
@@ -194,7 +215,7 @@ fetch("./photos.json")
         images.forEach(img=>{
 
 
-            img.onload = revealFeatured;
+            img.onload = reveal;
 
 
 
@@ -207,7 +228,7 @@ fetch("./photos.json")
                 );
 
 
-                revealFeatured();
+                reveal();
 
 
             };
@@ -221,20 +242,24 @@ fetch("./photos.json")
 
 
 
-
-
 })
+
+
 
 .catch(error=>{
 
 
     console.error(
+
         "Website image error:",
+
         error
+
     );
 
 
 });
+
 
 
 
@@ -254,66 +279,63 @@ const hiddenElements = document.querySelectorAll(
 
 
 
+
+
 if("IntersectionObserver" in window){
 
 
 
-    const observer = new IntersectionObserver((entries)=>{
+const observer = new IntersectionObserver((entries)=>{
 
 
-        entries.forEach(entry=>{
+entries.forEach(entry=>{
 
 
-            if(entry.isIntersecting){
+if(entry.isIntersecting){
 
 
-                entry.target.classList.add("show");
+entry.target.classList.add("show");
 
 
-                observer.unobserve(entry.target);
-
-
-            }
-
-
-        });
-
-
-
-    },{
-
-
-        threshold:.15
-
-
-    });
-
-
-
-
-
-    hiddenElements.forEach(element=>{
-
-
-        observer.observe(element);
-
-
-    });
-
+observer.unobserve(entry.target);
 
 
 }
 
-else{
+
+});
 
 
-    hiddenElements.forEach(element=>{
+},{
+
+threshold:.15
+
+});
 
 
-        element.classList.add("show");
 
 
-    });
+
+hiddenElements.forEach(element=>{
+
+
+observer.observe(element);
+
+
+});
+
+
+
+}else{
+
+
+hiddenElements.forEach(element=>{
+
+
+element.classList.add("show");
+
+
+});
 
 
 }
