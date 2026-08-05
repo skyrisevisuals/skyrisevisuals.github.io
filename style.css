@@ -17,15 +17,20 @@ html{
 html,
 body{
 
+    width:100%;
+
+    min-height:100%;
+
     background:#050505;
 
     color:white;
 
     font-family:Arial, Helvetica, sans-serif;
 
-    min-height:100%;
-
 }
+
+
+
 
 
 /* ================= HEADER ================= */
@@ -36,8 +41,6 @@ header{
     position:fixed;
 
     top:0;
-
-    left:0;
 
     width:100%;
 
@@ -51,17 +54,22 @@ header{
 
     z-index:1000;
 
+
+    background-color:#050505;
+
     background-size:cover;
 
     background-position:center;
 
     background-repeat:no-repeat;
 
+
     backdrop-filter:blur(10px);
 
-    transition:.8s ease;
+    transition:1s ease;
 
 }
+
 
 
 header::before{
@@ -72,11 +80,13 @@ header::before{
 
     inset:0;
 
+
     background:rgba(0,0,0,.75);
 
     z-index:-1;
 
 }
+
 
 
 header > *{
@@ -88,8 +98,6 @@ header > *{
 }
 
 
-
-/* ================= LOGO ================= */
 
 
 .logo{
@@ -103,6 +111,7 @@ header > *{
 }
 
 
+
 .logo span{
 
     color:#aaa;
@@ -113,9 +122,6 @@ header > *{
 
 
 
-/* ================= NAVIGATION ================= */
-
-
 nav{
 
     display:flex;
@@ -123,6 +129,7 @@ nav{
     gap:35px;
 
 }
+
 
 
 nav a{
@@ -138,11 +145,15 @@ nav a{
 }
 
 
+
 nav a:hover{
 
     color:#aaa;
 
 }
+
+
+
 
 
 
@@ -155,24 +166,23 @@ nav a:hover{
 
     height:100vh;
 
-    min-height:700px;
+
+    background-color:#050505;
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
 
     display:flex;
 
     align-items:center;
 
+
     padding:0 8%;
 
-    background:
-
-    linear-gradient(
-        rgba(0,0,0,.5),
-        rgba(0,0,0,.85)
-    );
-
-    background-size:cover;
-
-    background-position:center;
 
     transition:1s ease;
 
@@ -183,7 +193,7 @@ nav a:hover{
 
 .hero-text{
 
-    max-width:750px;
+    max-width:700px;
 
 }
 
@@ -192,14 +202,11 @@ nav a:hover{
 
 .small{
 
-    letter-spacing:4px;
+    letter-spacing:3px;
 
     font-size:14px;
 
-    color:#ccc;
-
 }
-
 
 
 
@@ -229,6 +236,9 @@ nav a:hover{
 
 
 
+
+
+
 /* ================= BUTTON ================= */
 
 
@@ -236,32 +246,44 @@ nav a:hover{
 
     display:inline-block;
 
+
     margin-top:30px;
+
 
     padding:15px 35px;
 
+
     background:white;
+
 
     color:black;
 
+
     text-decoration:none;
+
 
     border-radius:50px;
 
+
     font-weight:700;
+
 
     transition:.3s ease;
 
 }
 
 
+
 .button:hover{
 
     transform:translateY(-5px);
 
-    background:#ccc;
+    background:#ddd;
 
 }
+
+
+
 
 
 
@@ -274,7 +296,11 @@ section{
 
     padding:120px 8%;
 
+    background:#050505;
+
 }
+
+
 
 
 h2{
@@ -284,6 +310,7 @@ h2{
     margin-bottom:40px;
 
 }
+
 
 
 
@@ -302,7 +329,10 @@ h2{
 
 
 
-/* ================= SCROLL ANIMATIONS ================= */
+
+
+
+/* ================= SCROLL ANIMATION ================= */
 
 
 .hidden{
@@ -316,6 +346,7 @@ h2{
 }
 
 
+
 .hidden-left{
 
     opacity:0;
@@ -325,6 +356,7 @@ h2{
     transition:1s ease;
 
 }
+
 
 
 .hidden-right{
@@ -351,6 +383,9 @@ h2{
 
 
 
+
+
+
 /* ================= FEATURED SECTION ================= */
 
 
@@ -358,7 +393,11 @@ h2{
 
     overflow:hidden;
 
+    background:#050505;
+
 }
+
+
 
 
 
@@ -368,19 +407,23 @@ h2{
 
     position:relative;
 
+
     display:flex;
 
     justify-content:center;
 
     align-items:center;
 
+
     opacity:0;
 
     transform:translateY(40px);
 
+
     transition:1s ease;
 
 }
+
 
 
 
@@ -395,24 +438,33 @@ h2{
 
 
 
-/* ================= FEATURE PHOTOS ================= */
+
+
+
+
+/* ================= FEATURE IMAGES ================= */
 
 
 .feature-photo{
 
     position:absolute;
 
+
     object-fit:cover;
+
 
     border-radius:20px;
 
+
     box-shadow:
 
-    0 30px 60px rgba(0,0,0,.7);
+    0 30px 60px rgba(0,0,0,.6);
+
 
     transition:.5s ease;
 
 }
+
 
 
 
@@ -423,15 +475,19 @@ h2{
 
     height:500px;
 
+
     left:3%;
 
     top:170px;
 
+
     transform:rotate(-10deg);
+
 
     z-index:2;
 
 }
+
 
 
 
@@ -442,11 +498,14 @@ h2{
 
     height:650px;
 
+
     top:25px;
+
 
     z-index:4;
 
 }
+
 
 
 
@@ -457,15 +516,20 @@ h2{
 
     height:500px;
 
+
     right:3%;
+
 
     top:70px;
 
+
     transform:rotate(10deg);
+
 
     z-index:2;
 
 }
+
 
 
 
@@ -482,20 +546,6 @@ h2{
 
 
 
-/* ================= CONTACT ================= */
-
-
-.contact-links{
-
-    display:flex;
-
-    gap:20px;
-
-    flex-wrap:wrap;
-
-}
-
-
 
 
 
@@ -506,13 +556,19 @@ footer{
 
     padding:40px;
 
+
     text-align:center;
 
+
     background:#000;
+
 
     color:#888;
 
 }
+
+
+
 
 
 
@@ -524,27 +580,6 @@ footer{
 @media(max-width:900px){
 
 
-header{
-
-    padding:25px 5%;
-
-}
-
-
-.logo{
-
-    font-size:22px;
-
-}
-
-
-nav{
-
-    display:none;
-
-}
-
-
 
 .hero h1{
 
@@ -554,11 +589,12 @@ nav{
 
 
 
-.hero p{
+nav{
 
-    font-size:17px;
+    display:none;
 
 }
+
 
 
 
@@ -570,45 +606,50 @@ nav{
 
 
 
+
+
 .feature-photo.center{
 
     width:260px;
 
     height:400px;
 
+    top:40px;
+
 }
 
 
 
-.feature-photo.left,
+
+.feature-photo.left{
+
+    width:180px;
+
+    height:290px;
+
+
+    left:-5%;
+
+    top:120px;
+
+}
+
+
+
+
 .feature-photo.right{
 
     width:180px;
 
     height:290px;
 
-}
-
-
-.feature-photo.left{
-
-    left:-5%;
-
-}
-
-
-.feature-photo.right{
 
     right:-5%;
 
-}
-
-
-h2{
-
-    font-size:40px;
+    top:80px;
 
 }
+
 
 
 }
