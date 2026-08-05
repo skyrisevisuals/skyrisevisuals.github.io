@@ -1,4 +1,4 @@
-// ================= LOAD PHOTOS =================
+// ================= LOAD RANDOM PHOTO LIST =================
 
 fetch("./photos.json")
 
@@ -22,38 +22,7 @@ fetch("./photos.json")
 
 
 
-    // ================= RANDOM HERO BACKGROUND =================
-
-
-    const randomHero =
-    photos[Math.floor(Math.random() * photos.length)];
-
-
-    const hero = document.querySelector(".hero");
-
-
-    if(hero){
-
-
-        hero.style.backgroundImage = `
-
-        linear-gradient(
-        rgba(0,0,0,.55),
-        rgba(0,0,0,.85)
-        ),
-
-        url("./images/portfolio/${randomHero}")
-
-        `;
-
-
-    }
-
-
-
-
-
-    // ================= RANDOM HEADER BACKGROUND =================
+    // ================= RANDOM HEADER =================
 
 
     const header = document.querySelector("header");
@@ -62,113 +31,99 @@ fetch("./photos.json")
     if(header){
 
 
-        const randomHeader =
+        const headerPhoto =
         photos[Math.floor(Math.random() * photos.length)];
 
 
-
-        header.style.backgroundImage = `
-
-        linear-gradient(
-        rgba(0,0,0,.75),
-        rgba(0,0,0,.75)
+        header.style.backgroundImage = `linear-gradient(
+            rgba(0,0,0,.75),
+            rgba(0,0,0,.75)
         ),
+        url('./images/portfolio/${headerPhoto}')`;
 
-        url("./images/portfolio/${randomHeader}")
+    }
+
+
+
+
+    // ================= RANDOM HERO BANNER =================
+
+
+    const hero = document.querySelector(".hero");
+
+
+    if(hero){
+
+
+        const heroPhoto =
+        photos[Math.floor(Math.random() * photos.length)];
+
+
+        hero.style.backgroundImage = `linear-gradient(
+            rgba(0,0,0,.5),
+            rgba(0,0,0,.85)
+        ),
+        url('./images/portfolio/${heroPhoto}')`;
+
+
+    }
+
+
+
+
+
+
+    // ================= RANDOM FEATURED PHOTOS =================
+
+
+    const featured = document.getElementById("featured");
+
+
+    if(featured){
+
+
+        const shuffled = [...photos].sort(
+            () => Math.random() - .5
+        );
+
+
+        const selected = shuffled.slice(0,3);
+
+
+
+        featured.innerHTML = `
+
+
+        <img
+        class="feature-photo left"
+        src="./images/portfolio/${selected[0]}"
+        alt="SkyRise Visuals">
+
+
+        <img
+        class="feature-photo center"
+        src="./images/portfolio/${selected[1]}"
+        alt="SkyRise Visuals">
+
+
+        <img
+        class="feature-photo right"
+        src="./images/portfolio/${selected[2]}"
+        alt="SkyRise Visuals">
+
 
         `;
 
 
+
+        setTimeout(()=>{
+
+            featured.classList.add("show");
+
+        },300);
+
+
     }
-
-
-
-
-
-    // ================= FEATURED PHOTOS =================
-
-
-    const featured =
-    document.getElementById("featured");
-
-
-    if(!featured){
-        return;
-    }
-
-
-
-    photos.sort(() => Math.random() - .5);
-
-
-
-    const selected =
-    photos.slice(0,3);
-
-
-
-    featured.innerHTML = `
-
-
-    <img
-    class="feature-photo left"
-    src="./images/portfolio/${selected[0]}"
-    alt="SkyRise Visuals">
-
-
-    <img
-    class="feature-photo center"
-    src="./images/portfolio/${selected[1]}"
-    alt="SkyRise Visuals">
-
-
-    <img
-    class="feature-photo right"
-    src="./images/portfolio/${selected[2]}"
-    alt="SkyRise Visuals">
-
-
-    `;
-
-
-
-    const images =
-    featured.querySelectorAll("img");
-
-
-    let loaded = 0;
-
-
-
-    images.forEach(img=>{
-
-
-        img.onload = ()=>{
-
-
-            loaded++;
-
-
-            if(loaded === images.length){
-
-                featured.classList.add("show");
-
-            }
-
-
-        };
-
-
-        img.onerror = ()=>{
-
-
-            loaded++;
-
-
-        };
-
-
-    });
 
 
 
@@ -180,8 +135,8 @@ fetch("./photos.json")
 
 
     console.error(
-    "Gallery error:",
-    error
+        "Photo loading error:",
+        error
     );
 
 
@@ -192,12 +147,13 @@ fetch("./photos.json")
 
 
 
+
 // ================= SCROLL ANIMATION =================
 
 
-const hidden =
+const hiddenElements =
 document.querySelectorAll(
-".hidden,.hidden-left,.hidden-right"
+".hidden, .hidden-left, .hidden-right"
 );
 
 
@@ -205,23 +161,22 @@ document.querySelectorAll(
 if("IntersectionObserver" in window){
 
 
-const observer =
-new IntersectionObserver(entries=>{
+const observer = new IntersectionObserver((entries)=>{
 
 
 entries.forEach(entry=>{
 
 
-if(entry.isIntersecting){
+    if(entry.isIntersecting){
 
 
-entry.target.classList.add("show");
+        entry.target.classList.add("show");
 
 
-observer.unobserve(entry.target);
+        observer.unobserve(entry.target);
 
 
-}
+    }
 
 
 });
@@ -233,24 +188,23 @@ threshold:.15
 
 
 
-hidden.forEach(item=>{
+hiddenElements.forEach(element=>{
 
 
-observer.observe(item);
+observer.observe(element);
 
 
 });
 
 
-}
 
-else{
-
-
-hidden.forEach(item=>{
+}else{
 
 
-item.classList.add("show");
+hiddenElements.forEach(element=>{
+
+
+element.classList.add("show");
 
 
 });
