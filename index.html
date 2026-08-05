@@ -22,7 +22,7 @@
 <header>
 
     <div class="logo">
-        SKYRISE<span>VISUALS</span>
+        SKYRISE <span>VISUALS</span>
     </div>
 
 
@@ -42,10 +42,11 @@
 
 
 
+
+
 <!-- ================= HERO ================= -->
 
 <section class="hero">
-
 
 <div class="overlay"></div>
 
@@ -54,7 +55,7 @@
 
 
 <p class="small">
-AERIAL • AUTOMOTIVE • CINEMATIC
+PHOTOGRAPHY • DRONE • VISUAL STORYTELLING
 </p>
 
 
@@ -90,6 +91,8 @@ FREE DOWNLOADS
 
 
 
+
+
 <!-- ================= PORTFOLIO ================= -->
 
 
@@ -108,58 +111,43 @@ Portfolio
 
 <div class="card large reveal">
 
-<img id="portfolio1" src="" alt="Photography">
-
-<div>
-Aerial
-</div>
+<img id="portfolio1" src="" alt="SkyRise Visuals Photography">
 
 </div>
-
 
 
 
 <div class="card reveal">
 
-<img id="portfolio2" src="" alt="Photography">
-
-<div>
-Automotive
-</div>
+<img id="portfolio2" src="" alt="SkyRise Visuals Photography">
 
 </div>
-
 
 
 
 <div class="card reveal">
 
-<img id="portfolio3" src="" alt="Photography">
-
-<div>
-City
-</div>
+<img id="portfolio3" src="" alt="SkyRise Visuals Photography">
 
 </div>
-
 
 
 
 <div class="card reveal">
 
-<img id="portfolio4" src="" alt="Photography">
-
-<div>
-Cinematic
-</div>
+<img id="portfolio4" src="" alt="SkyRise Visuals Photography">
 
 </div>
+
 
 
 </div>
 
 
 </section>
+
+
+
 
 
 
@@ -182,9 +170,9 @@ Free Downloads
 
 <p class="about-text">
 
-Explore free SkyRise Visuals content including
-4K wallpapers, aerial photography, and future
-creative resources.
+Download free SkyRise Visuals content including
+wallpapers, photography resources, and future
+creative releases.
 
 </p>
 
@@ -199,34 +187,33 @@ creative resources.
 
 
 
+
+
 <article class="download-card reveal">
 
 
 <div class="download-image">
 
-<img 
-src="images/drone-wallpaper.jpg"
-alt="Drone wallpaper">
+<img src="images/drone-wallpaper.jpg"
+alt="Photography wallpaper">
 
 </div>
-
 
 
 <div class="download-content">
 
 
 <h3>
-4K Drone Wallpaper
+4K Wallpaper Collection
 </h3>
 
 
 <p>
-Cinematic aerial photography captured from above.
+Cinematic photography wallpapers for your devices.
 </p>
 
 
-<a 
-class="button"
+<a class="button"
 href="downloads/drone-wallpaper.jpg"
 download>
 
@@ -251,19 +238,17 @@ Download
 
 <div class="download-image">
 
-<img
-src="images/car-wallpaper.jpg"
-alt="Car wallpaper">
+<img src="images/car-wallpaper.jpg"
+alt="Automotive photography">
 
 </div>
-
 
 
 <div class="download-content">
 
 
 <h3>
-Automotive Wallpaper
+Automotive Collection
 </h3>
 
 
@@ -272,9 +257,7 @@ High-resolution automotive photography.
 </p>
 
 
-
-<a
-class="button"
+<a class="button"
 href="downloads/car-wallpaper.jpg"
 download>
 
@@ -294,37 +277,32 @@ Download
 
 
 
+
 <article class="download-card reveal">
 
 
 <div class="download-image">
 
-
-<img
-src="images/city-wallpaper.jpg"
-alt="City wallpaper">
-
+<img src="images/city-wallpaper.jpg"
+alt="City photography">
 
 </div>
-
 
 
 <div class="download-content">
 
 
 <h3>
-City Aerial Collection
+Aerial City Collection
 </h3>
 
 
 <p>
-Cinematic skyline photography.
+Cinematic skyline and aerial photography.
 </p>
 
 
-
-<a
-class="button"
+<a class="button"
 href="downloads/city-wallpaper.jpg"
 download>
 
@@ -340,10 +318,14 @@ Download
 
 
 
+
+
 </div>
 
 
 </section>
+
+
 
 
 
@@ -366,13 +348,15 @@ About
 <p class="about-text">
 
 SkyRise Visuals creates cinematic photography
-focused on aerial perspectives, automotive
-culture, and unique visual storytelling.
+focused on unique perspectives, aerial visuals,
+automotive culture, and creative storytelling.
 
 </p>
 
 
 </section>
+
+
 
 
 
@@ -395,21 +379,33 @@ Connect
 <div class="contact-links">
 
 
-<a class="button" href="https://www.instagram.com/skyrisevisuals/" target="_blank">
+<a class="button"
+href="https://www.instagram.com/skyrisevisuals/"
+target="_blank">
+
 Instagram
+
 </a>
 
 
 
-<a class="button" href="https://ko-fi.com/skyrisevisuals" target="_blank">
+
+<a class="button"
+href="https://ko-fi.com/skyrisevisuals"
+target="_blank">
+
 Support
+
 </a>
+
 
 
 </div>
 
 
 </section>
+
+
 
 
 
@@ -436,11 +432,15 @@ Support
 
 
 
-<!-- ================= SCROLL ANIMATION ================= -->
+
+
+<!-- ================= SCRIPTS ================= -->
 
 
 <script>
 
+
+// Scroll animations
 
 const reveals = document.querySelectorAll(".reveal");
 
@@ -453,9 +453,7 @@ entries.forEach(entry => {
 
 if(entry.isIntersecting){
 
-
 entry.target.classList.add("show");
-
 
 }
 
@@ -466,27 +464,36 @@ entry.target.classList.add("show");
 });
 
 
-
 reveals.forEach(el => observer.observe(el));
 
 
 
-</script>
 
-<script>
+
+// Random portfolio images
 
 const photos = [
 
-"images/portfolio/car1.jpg",
-"images/portfolio/car2.jpg",
-"images/portfolio/drone1.jpg",
-"images/portfolio/drone2.jpg",
-"images/portfolio/city1.jpg",
-"images/portfolio/city2.jpg",
-"images/portfolio/sunset1.jpg",
-"images/portfolio/sunset2.jpg"
+
+"images/portfolio/photo1.jpg",
+
+"images/portfolio/photo2.jpg",
+
+"images/portfolio/photo3.jpg",
+
+"images/portfolio/photo4.jpg",
+
+"images/portfolio/photo5.jpg",
+
+"images/portfolio/photo6.jpg",
+
+"images/portfolio/photo7.jpg",
+
+"images/portfolio/photo8.jpg"
+
 
 ];
+
 
 
 // Shuffle photos
@@ -494,7 +501,8 @@ const photos = [
 photos.sort(() => Math.random() - 0.5);
 
 
-// Assign random images
+
+// Load random images
 
 document.getElementById("portfolio1").src = photos[0];
 
@@ -505,7 +513,9 @@ document.getElementById("portfolio3").src = photos[2];
 document.getElementById("portfolio4").src = photos[3];
 
 
+
 </script>
+
 
 
 </body>
