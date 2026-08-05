@@ -21,22 +21,35 @@
 
 <header>
 
-    <div class="logo">
-        SKYRISE <span>VISUALS</span>
-    </div>
+<div class="logo">
+SKYRISE <span>VISUALS</span>
+</div>
 
 
-    <nav>
+<nav>
 
-        <a href="#portfolio">Portfolio</a>
+<a href="portfolio.html">
+Portfolio
+</a>
 
-        <a href="#downloads">Downloads</a>
 
-        <a href="#about">About</a>
+<a href="#downloads">
+Downloads
+</a>
 
-        <a href="#contact">Contact</a>
 
-    </nav>
+<a href="#about">
+About
+</a>
+
+
+<a href="#contact">
+Contact
+</a>
+
+
+</nav>
+
 
 </header>
 
@@ -44,7 +57,10 @@
 
 
 
+
+
 <!-- ================= HERO ================= -->
+
 
 <section class="hero">
 
@@ -60,10 +76,12 @@ PHOTOGRAPHY • DRONE • VISUAL STORYTELLING
 </p>
 
 
+
 <h1>
 SkyRise<br>
 Visuals
 </h1>
+
 
 
 <p>
@@ -73,14 +91,16 @@ drone visuals, and cinematic storytelling.
 
 
 
-<a href="#portfolio" class="button">
-VIEW WORK
+<a href="portfolio.html" class="button">
+VIEW PORTFOLIO
 </a>
+
 
 
 <a href="#downloads" class="button outline">
 FREE DOWNLOADS
 </a>
+
 
 
 </div>
@@ -94,14 +114,16 @@ FREE DOWNLOADS
 
 
 
-<!-- ================= PORTFOLIO ================= -->
+
+
+<!-- ================= FEATURED PORTFOLIO ================= -->
 
 
 <section id="portfolio">
 
 
 <h2 class="hidden">
-Portfolio
+Featured Work
 </h2>
 
 
@@ -112,7 +134,8 @@ Portfolio
 
 <div class="card large hidden">
 
-<img id="portfolio1" src="" alt="SkyRise Visuals Photography">
+<img src="images/portfolio/photo1.jpg"
+alt="SkyRise Visuals Photography">
 
 </div>
 
@@ -120,7 +143,8 @@ Portfolio
 
 <div class="card hidden">
 
-<img id="portfolio2" src="" alt="SkyRise Visuals Photography">
+<img src="images/portfolio/photo2.jpg"
+alt="SkyRise Visuals Photography">
 
 </div>
 
@@ -128,7 +152,8 @@ Portfolio
 
 <div class="card hidden">
 
-<img id="portfolio3" src="" alt="SkyRise Visuals Photography">
+<img src="images/portfolio/photo3.jpg"
+alt="SkyRise Visuals Photography">
 
 </div>
 
@@ -136,13 +161,30 @@ Portfolio
 
 <div class="card hidden">
 
-<img id="portfolio4" src="" alt="SkyRise Visuals Photography">
+<img src="images/portfolio/photo4.jpg"
+alt="SkyRise Visuals Photography">
 
 </div>
 
 
 
 </div>
+
+
+
+
+<div style="margin-top:40px;">
+
+
+<a href="portfolio.html" class="button">
+
+VIEW ALL PHOTOS
+
+</a>
+
+
+</div>
+
 
 
 </section>
@@ -169,11 +211,11 @@ Free Downloads
 </h2>
 
 
+
 <p class="about-text">
 
-Download free SkyRise Visuals content including
-wallpapers, photography resources, and future
-creative releases.
+Download free SkyRise Visuals wallpapers,
+photography resources, and future creative releases.
 
 </p>
 
@@ -191,10 +233,8 @@ creative releases.
 <article class="download-card hidden">
 
 
-<img 
-src="images/drone-wallpaper.jpg"
+<img src="images/drone-wallpaper.jpg"
 alt="Photography wallpaper">
-
 
 
 <div class="download-content">
@@ -210,9 +250,8 @@ Cinematic photography wallpapers for your devices.
 </p>
 
 
-<a 
+<a href="downloads/drone-wallpaper.jpg"
 class="button"
-href="downloads/drone-wallpaper.jpg"
 download>
 
 DOWNLOAD
@@ -231,13 +270,12 @@ DOWNLOAD
 
 
 
+
 <article class="download-card hidden">
 
 
-<img 
-src="images/car-wallpaper.jpg"
-alt="Automotive photography wallpaper">
-
+<img src="images/car-wallpaper.jpg"
+alt="Automotive wallpaper">
 
 
 <div class="download-content">
@@ -253,9 +291,8 @@ High-resolution automotive photography.
 </p>
 
 
-<a 
+<a href="downloads/car-wallpaper.jpg"
 class="button"
-href="downloads/car-wallpaper.jpg"
 download>
 
 DOWNLOAD
@@ -274,13 +311,12 @@ DOWNLOAD
 
 
 
+
 <article class="download-card hidden">
 
 
-<img 
-src="images/city-wallpaper.jpg"
-alt="City photography wallpaper">
-
+<img src="images/city-wallpaper.jpg"
+alt="City wallpaper">
 
 
 <div class="download-content">
@@ -296,9 +332,8 @@ Cinematic skyline and aerial photography.
 </p>
 
 
-<a 
+<a href="downloads/city-wallpaper.jpg"
 class="button"
-href="downloads/city-wallpaper.jpg"
 download>
 
 DOWNLOAD
@@ -310,6 +345,7 @@ DOWNLOAD
 
 
 </article>
+
 
 
 
@@ -372,8 +408,7 @@ Connect
 <div class="contact-links">
 
 
-<a 
-class="button"
+<a class="button"
 href="https://www.instagram.com/skyrisevisuals/"
 target="_blank">
 
@@ -383,8 +418,8 @@ Instagram
 
 
 
-<a 
-class="button"
+
+<a class="button"
 href="https://ko-fi.com/skyrisevisuals"
 target="_blank">
 
@@ -412,7 +447,6 @@ Support
 
 <footer>
 
-
 <p>
 © 2026 SkyRise Visuals. All Rights Reserved.
 </p>
@@ -428,13 +462,10 @@ Support
 
 
 
-<!-- ================= SCRIPTS ================= -->
+<!-- ================= FADE UP SCRIPT ================= -->
 
 
 <script>
-
-
-// Fade Up Animation
 
 
 const hiddenElements = document.querySelectorAll(".hidden");
@@ -463,7 +494,7 @@ observer.unobserve(entry.target);
 
 },{
 
-threshold:0.15
+threshold:.15
 
 });
 
@@ -476,53 +507,8 @@ observer.observe(el);
 });
 
 
-
-
-
-
-
-// Random Portfolio Images
-
-
-const photos = [
-
-
-"images/portfolio/photo1.jpg",
-
-"images/portfolio/photo2.jpg",
-
-"images/portfolio/photo3.jpg",
-
-"images/portfolio/photo4.jpg",
-
-"images/portfolio/photo5.jpg",
-
-"images/portfolio/photo6.jpg",
-
-"images/portfolio/photo7.jpg",
-
-"images/portfolio/photo8.jpg"
-
-
-];
-
-
-
-photos.sort(()=>Math.random()-0.5);
-
-
-
-document.getElementById("portfolio1").src = photos[0];
-
-document.getElementById("portfolio2").src = photos[1];
-
-document.getElementById("portfolio3").src = photos[2];
-
-document.getElementById("portfolio4").src = photos[3];
-
-
-
 </script>
+
 
 
 </body>
