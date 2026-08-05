@@ -1,52 +1,54 @@
-name: Build Photo Gallery
+name: SkyRise Visuals Website Check
 
 on:
   push:
-    paths:
-      - "images/portfolio/**"
+    branches:
+      - main
+
+  workflow_dispatch:
+
+
+permissions:
+  contents: read
+
 
 jobs:
-  build-gallery:
+
+  website-check:
 
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
 
     steps:
 
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    - name: Checkout Website
+      uses: actions/checkout@v5
 
 
-    - name: Create photos.json
+    - name: Verify Website Files
       run: |
-        echo "[" > photos.json
-        
-        first=true
-        
-        for file in images/portfolio/*; do
-          filename=$(basename "$file")
-          
-          if [ "$first" = true ]; then
-            first=false
-          else
-            echo "," >> photos.json
-          fi
-          
-          echo "\"$filename\"" >> photos.json
-        done
-        
-        echo "]" >> photos.json
+
+        echo "Checking SkyRise Visuals files..."
+
+        test -f index.html
+        test -f style.css
+        test -f script.js
+        test -f photos.json
+
+        echo "All required files found."
 
 
-    - name: Commit photos.json
+    - name: List Website Structure
       run: |
-        git config --global user.name "github-actions"
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-        git add photos.json
+        echo "Website files:"
+        ls -la
 
-        git commit -m "Update photo gallery" || exit 0
+        echo "Images:"
+        ls -la images/portfolio || true
 
-        git push
+
+    - name: Website Check Complete
+      run: |
+
+        echo "SkyRise Visuals build check passed."
