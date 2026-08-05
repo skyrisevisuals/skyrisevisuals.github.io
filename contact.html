@@ -24,7 +24,9 @@
 
 
 <div class="logo">
+
 SKYRISE <span>VISUALS</span>
+
 </div>
 
 
@@ -58,22 +60,27 @@ Contact
 
 
 
-<!-- ================= CONTACT ================= -->
+
+
+<!-- ================= CONTACT PAGE ================= -->
 
 
 <section class="contact-page hidden">
 
 
 <h1>
+
 Let's Connect
+
 </h1>
 
 
 
 <p class="about-text">
 
-Have a project, collaboration idea, or just want
-to connect? Reach out through email or social media.
+Have a project, collaboration idea, or want to work together?
+Feel free to reach out through email or follow SkyRise Visuals
+on social media.
 
 </p>
 
@@ -84,7 +91,9 @@ to connect? Reach out through email or social media.
 <div class="contact-links">
 
 
-<a class="button"
+
+<a 
+class="button"
 href="mailto:donwoods94@yahoo.com">
 
 Email
@@ -95,7 +104,8 @@ Email
 
 
 
-<a class="button"
+<a 
+class="button"
 href="https://www.instagram.com/skyrisevisuals/"
 target="_blank">
 
@@ -117,11 +127,18 @@ Instagram
 
 
 
+
+
+<!-- ================= FOOTER ================= -->
+
+
 <footer>
 
 
 <p>
+
 © 2026 SkyRise Visuals. All Rights Reserved.
+
 </p>
 
 
@@ -131,6 +148,11 @@ Instagram
 
 
 
+
+
+
+
+<!-- ================= FADE UP ANIMATION ================= -->
 
 
 <script>
@@ -147,9 +169,12 @@ entries.forEach((entry)=>{
 
 if(entry.isIntersecting){
 
+
 entry.target.classList.add("show");
 
+
 observer.unobserve(entry.target);
+
 
 }
 
@@ -159,9 +184,7 @@ observer.unobserve(entry.target);
 
 },{
 
-
 threshold:.15
-
 
 });
 
@@ -169,7 +192,9 @@ threshold:.15
 
 hiddenElements.forEach((el)=>{
 
+
 observer.observe(el);
+
 
 });
 
