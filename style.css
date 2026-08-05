@@ -65,9 +65,10 @@
     height:500px;
 
 
-    left:16%;
+    left:8%;
 
-    top:10px;
+
+    top:0;
 
 
     transform:rotate(-10deg);
@@ -115,15 +116,15 @@
 .feature-photo.right{
 
 
-    width:330px;
+    width:320px;
 
-    height:470px;
-
-
-    right:16%;
+    height:460px;
 
 
-    top:220px;
+    right:8%;
+
+
+    top:230px;
 
 
     transform:rotate(10deg);
@@ -147,6 +148,7 @@
 
 
     transform:scale(1.06) rotate(0deg);
+
 
     z-index:5;
 
@@ -201,7 +203,7 @@
     height:330px;
 
 
-    left:3%;
+    left:0;
 
 
     top:40px;
@@ -216,15 +218,15 @@
 .feature-photo.right{
 
 
-    width:200px;
+    width:190px;
 
-    height:290px;
-
-
-    right:3%;
+    height:280px;
 
 
-    top:170px;
+    right:0;
+
+
+    top:190px;
 
 
 }
