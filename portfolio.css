@@ -13,7 +13,7 @@
 
     font-size:70px;
 
-    margin-bottom:60px;
+    margin-bottom:50px;
 
     font-weight:800;
 
@@ -53,11 +53,14 @@
 
     overflow:hidden;
 
-    border-radius:20px;
+    border-radius:18px;
 
-    height:500px;
+    height:450px;
 
     background:#111;
+
+
+    /* Fade animation */
 
     opacity:0;
 
@@ -79,6 +82,10 @@
 
 
 
+
+
+
+
 .photo-card img{
 
     width:100%;
@@ -87,7 +94,7 @@
 
     object-fit:cover;
 
-    transition:.7s ease;
+    transition:.6s ease;
 
 }
 
@@ -122,7 +129,7 @@
     color:black;
 
 
-    padding:12px 28px;
+    padding:12px 25px;
 
 
     border-radius:30px;
@@ -131,7 +138,7 @@
     text-decoration:none;
 
 
-    font-weight:700;
+    font-weight:600;
 
 
     font-size:14px;
@@ -148,9 +155,10 @@
 
 .download-btn:hover{
 
+
     transform:translateY(-5px);
 
-    background:#ccc;
+    background:#aaa;
 
 }
 
@@ -160,7 +168,7 @@
 
 
 
-/* ================= IMAGE OVERLAY ================= */
+/* ================= PHOTO OVERLAY ================= */
 
 
 .photo-card::after{
@@ -173,8 +181,11 @@
 
 
     background:linear-gradient(
+
         transparent,
+
         rgba(0,0,0,.35)
+
     );
 
 
@@ -236,7 +247,7 @@
 
 .photo-card{
 
-    height:420px;
+    height:400px;
 
 }
 
