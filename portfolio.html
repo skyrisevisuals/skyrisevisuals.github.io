@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 
 <meta charset="UTF-8">
@@ -9,14 +10,18 @@
 
 <title>SkyRise Visuals | Portfolio</title>
 
+
 <link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet" href="portfolio.css">
 
+
 </head>
 
 
+
 <body>
+
 
 
 <!-- ================= HEADER ================= -->
@@ -36,7 +41,9 @@ SKYRISE <span>VISUALS</span>
 <nav>
 
 <a href="index.html">
+
 Home
+
 </a>
 
 
@@ -59,13 +66,18 @@ Home
 <section class="portfolio-page">
 
 
-<h1>
+
+<h1 class="hidden">
+
 Portfolio
+
 </h1>
 
 
 
+
 <div class="photo-grid" id="gallery">
+
 
 </div>
 
@@ -96,6 +108,7 @@ fetch("photos.json")
 .then(photos => {
 
 
+
 const gallery = document.getElementById("gallery");
 
 
@@ -107,7 +120,8 @@ photos.forEach(photo => {
 gallery.innerHTML += `
 
 
-<div class="photo-card">
+<div class="photo-card hidden">
+
 
 
 <img
@@ -115,6 +129,9 @@ gallery.innerHTML += `
 src="images/portfolio/${photo}"
 
 alt="SkyRise Visuals Photography">
+
+
+
 
 
 
@@ -126,7 +143,9 @@ href="images/portfolio/${photo}"
 
 download>
 
+
 Download
+
 
 </a>
 
@@ -138,6 +157,7 @@ Download
 `;
 
 
+
 });
 
 
@@ -146,9 +166,73 @@ Download
 
 .catch(error => {
 
+
 console.error("Gallery loading error:", error);
 
+
 });
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<!-- ================= FADE UP ANIMATION ================= -->
+
+
+<script>
+
+
+const hiddenElements = document.querySelectorAll(
+".hidden, .hidden-left, .hidden-right"
+);
+
+
+
+const observer = new IntersectionObserver((entries)=>{
+
+
+entries.forEach((entry)=>{
+
+
+if(entry.isIntersecting){
+
+
+entry.target.classList.add("show");
+
+
+observer.unobserve(entry.target);
+
+
+}
+
+
+});
+
+
+},{
+
+threshold:.15
+
+});
+
+
+
+hiddenElements.forEach((el)=>{
+
+
+observer.observe(el);
+
+
+});
+
 
 
 </script>
