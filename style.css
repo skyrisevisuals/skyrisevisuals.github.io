@@ -13,7 +13,7 @@
 
 .featured-stack{
 
-    height:750px;
+    height:700px;
 
     position:relative;
 
@@ -65,10 +65,10 @@
     height:500px;
 
 
-    left:-2%;
+    left:8%;
 
 
-    top:40px;
+    top:120px;
 
 
     transform:rotate(-10deg);
@@ -116,15 +116,15 @@
 .feature-photo.right{
 
 
-    width:320px;
+    width:360px;
 
-    height:460px;
-
-
-    right:-2%;
+    height:500px;
 
 
-    top:260px;
+    right:8%;
+
+
+    top:80px;
 
 
     transform:rotate(10deg);
@@ -141,14 +141,13 @@
 
 
 
-/* ================= HOVER EFFECT ================= */
+/* ================= HOVER ================= */
 
 
 .feature-photo:hover{
 
 
     transform:scale(1.06) rotate(0deg);
-
 
     z-index:5;
 
@@ -170,7 +169,7 @@
 
 .featured-stack{
 
-    height:550px;
+    height:520px;
 
 }
 
@@ -195,7 +194,6 @@
 
 
 
-
 .feature-photo.left{
 
 
@@ -204,10 +202,10 @@
     height:330px;
 
 
-    left:-20px;
+    left:0;
 
 
-    top:60px;
+    top:100px;
 
 
 }
@@ -216,19 +214,18 @@
 
 
 
-
 .feature-photo.right{
 
 
-    width:190px;
+    width:220px;
 
-    height:280px;
-
-
-    right:-20px;
+    height:330px;
 
 
-    top:200px;
+    right:0;
+
+
+    top:70px;
 
 
 }
