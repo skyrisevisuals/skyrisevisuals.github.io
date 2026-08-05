@@ -226,6 +226,11 @@ if("IntersectionObserver" in window){
 
 
     });
+html,
+body{
 
+    background:#050505;
+
+    color:white;
 
 }
