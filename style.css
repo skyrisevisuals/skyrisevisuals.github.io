@@ -1,58 +1,259 @@
-/* ================= HERO ================= */
+// ================= LOAD PHOTOS =================
+
+fetch("./photos.json")
+
+.then(response => {
+
+    if(!response.ok){
+        throw new Error("photos.json failed");
+    }
+
+    return response.json();
+
+})
 
 
-.hero{
+.then(photos => {
 
-    height:100vh;
 
-    background:#000;
-
-    background-size:cover;
-
-    background-position:center;
-
-    background-repeat:no-repeat;
-
-    display:flex;
-
-    align-items:center;
-
-    padding:0 8%;
-
-    position:relative;
-
-    transition:background-image 1s ease;
-
-}
+    if(!photos.length){
+        return;
+    }
 
 
 
-.hero::before{
+    // ================= RANDOM HERO BACKGROUND =================
 
-    content:"";
 
-    position:absolute;
+    const randomHero =
+    photos[Math.floor(Math.random() * photos.length)];
 
-    inset:0;
 
-    background:linear-gradient(
+    const hero = document.querySelector(".hero");
 
-        rgba(0,0,0,.45),
 
+    if(hero){
+
+
+        hero.style.backgroundImage = `
+
+        linear-gradient(
+        rgba(0,0,0,.55),
         rgba(0,0,0,.85)
+        ),
 
+        url("./images/portfolio/${randomHero}")
+
+        `;
+
+
+    }
+
+
+
+
+
+    // ================= RANDOM HEADER BACKGROUND =================
+
+
+    const header = document.querySelector("header");
+
+
+    if(header){
+
+
+        const randomHeader =
+        photos[Math.floor(Math.random() * photos.length)];
+
+
+
+        header.style.backgroundImage = `
+
+        linear-gradient(
+        rgba(0,0,0,.75),
+        rgba(0,0,0,.75)
+        ),
+
+        url("./images/portfolio/${randomHeader}")
+
+        `;
+
+
+    }
+
+
+
+
+
+    // ================= FEATURED PHOTOS =================
+
+
+    const featured =
+    document.getElementById("featured");
+
+
+    if(!featured){
+        return;
+    }
+
+
+
+    photos.sort(() => Math.random() - .5);
+
+
+
+    const selected =
+    photos.slice(0,3);
+
+
+
+    featured.innerHTML = `
+
+
+    <img
+    class="feature-photo left"
+    src="./images/portfolio/${selected[0]}"
+    alt="SkyRise Visuals">
+
+
+    <img
+    class="feature-photo center"
+    src="./images/portfolio/${selected[1]}"
+    alt="SkyRise Visuals">
+
+
+    <img
+    class="feature-photo right"
+    src="./images/portfolio/${selected[2]}"
+    alt="SkyRise Visuals">
+
+
+    `;
+
+
+
+    const images =
+    featured.querySelectorAll("img");
+
+
+    let loaded = 0;
+
+
+
+    images.forEach(img=>{
+
+
+        img.onload = ()=>{
+
+
+            loaded++;
+
+
+            if(loaded === images.length){
+
+                featured.classList.add("show");
+
+            }
+
+
+        };
+
+
+        img.onerror = ()=>{
+
+
+            loaded++;
+
+
+        };
+
+
+    });
+
+
+
+})
+
+
+
+.catch(error=>{
+
+
+    console.error(
+    "Gallery error:",
+    error
     );
 
+
+});
+
+
+
+
+
+
+// ================= SCROLL ANIMATION =================
+
+
+const hidden =
+document.querySelectorAll(
+".hidden,.hidden-left,.hidden-right"
+);
+
+
+
+if("IntersectionObserver" in window){
+
+
+const observer =
+new IntersectionObserver(entries=>{
+
+
+entries.forEach(entry=>{
+
+
+if(entry.isIntersecting){
+
+
+entry.target.classList.add("show");
+
+
+observer.unobserve(entry.target);
+
+
 }
 
 
+});
 
-.hero-text{
 
-    position:relative;
+},{
+threshold:.15
+});
 
-    z-index:2;
 
-    max-width:700px;
+
+hidden.forEach(item=>{
+
+
+observer.observe(item);
+
+
+});
+
+
+}
+
+else{
+
+
+hidden.forEach(item=>{
+
+
+item.classList.add("show");
+
+
+});
+
 
 }
