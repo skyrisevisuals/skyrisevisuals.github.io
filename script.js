@@ -1,6 +1,5 @@
 // ================= RANDOM HEADER BACKGROUND =================
 
-
 fetch("./photos.json")
 
 .then(response => {
@@ -25,17 +24,22 @@ fetch("./photos.json")
     if(header && photos.length > 0){
 
 
-        const randomHeaderPhoto =
+        const randomPhoto =
         photos[Math.floor(Math.random() * photos.length)];
 
 
 
         header.style.backgroundImage =
-        `url("./images/portfolio/${randomHeaderPhoto}")`;
+
+        `linear-gradient(
+            rgba(0,0,0,.75),
+            rgba(0,0,0,.75)
+        ),
+        url("./images/portfolio/${randomPhoto}")`;
+
 
 
     }
-
 
 
 })
@@ -44,8 +48,11 @@ fetch("./photos.json")
 
 
     console.error(
+
         "Header background error:",
+
         error
+
     );
 
 
@@ -87,6 +94,7 @@ fetch("./photos.json")
     const featured = document.getElementById("featured");
 
 
+
     if(!featured){
 
         console.error("Featured container missing");
@@ -98,7 +106,8 @@ fetch("./photos.json")
 
 
 
-    // Shuffle photos
+
+    // Shuffle photos randomly
 
     photos.sort(() => Math.random() - 0.5);
 
@@ -108,26 +117,41 @@ fetch("./photos.json")
 
 
 
+
     featured.innerHTML = `
 
 
+
     <img
+
     class="feature-photo left"
+
     src="./images/portfolio/${selected[0]}"
+
     alt="SkyRise Visuals Photography">
 
 
 
+
+
     <img
+
     class="feature-photo center"
+
     src="./images/portfolio/${selected[1]}"
+
     alt="SkyRise Visuals Photography">
 
 
 
+
+
     <img
+
     class="feature-photo right"
+
     src="./images/portfolio/${selected[2]}"
+
     alt="SkyRise Visuals Photography">
 
 
@@ -137,7 +161,9 @@ fetch("./photos.json")
 
 
 
-    // Wait for images before showing
+
+
+    // Reveal after images load
 
 
     const images = featured.querySelectorAll("img");
@@ -147,7 +173,8 @@ fetch("./photos.json")
 
 
 
-    function finishLoading(){
+
+    function imageLoaded(){
 
 
         loaded++;
@@ -167,11 +194,12 @@ fetch("./photos.json")
 
 
 
+
     images.forEach(img => {
 
 
 
-        img.onload = finishLoading;
+        img.onload = imageLoaded;
 
 
 
@@ -179,12 +207,15 @@ fetch("./photos.json")
 
 
             console.error(
+
                 "Missing image:",
+
                 img.src
+
             );
 
 
-            finishLoading();
+            imageLoaded();
 
 
         };
@@ -203,8 +234,11 @@ fetch("./photos.json")
 
 
     console.error(
+
         "Featured gallery error:",
+
         error
+
     );
 
 
@@ -218,12 +252,19 @@ fetch("./photos.json")
 
 
 
-// ================= SCROLL ANIMATIONS =================
+
+
+
+// ================= SCROLL ANIMATION =================
 
 
 const hiddenElements = document.querySelectorAll(
+
     ".hidden, .hidden-left, .hidden-right"
+
 );
+
+
 
 
 
@@ -277,6 +318,7 @@ if("IntersectionObserver" in window){
 }else{
 
 
+
     hiddenElements.forEach(element=>{
 
 
@@ -284,6 +326,7 @@ if("IntersectionObserver" in window){
 
 
     });
+
 
 
 }
