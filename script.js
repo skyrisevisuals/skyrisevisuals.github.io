@@ -1,8 +1,11 @@
-// ================= RANDOM HEADER BACKGROUND =================
+// ================= RANDOM HERO BANNER =================
+
 
 fetch("./photos.json")
 
+
 .then(response => {
+
 
     if(!response.ok){
 
@@ -10,7 +13,9 @@ fetch("./photos.json")
 
     }
 
+
     return response.json();
+
 
 })
 
@@ -18,38 +23,50 @@ fetch("./photos.json")
 .then(photos => {
 
 
-    const header = document.querySelector("header");
-
-
-    if(header && photos.length > 0){
-
-
-        const randomPhoto =
-        photos[Math.floor(Math.random() * photos.length)];
+    const hero = document.querySelector(".hero");
 
 
 
-        header.style.backgroundImage =
+    if(!hero || photos.length === 0){
 
-        `linear-gradient(
-            rgba(0,0,0,.75),
-            rgba(0,0,0,.75)
-        ),
-        url("./images/portfolio/${randomPhoto}")`;
-
-
+        return;
 
     }
 
 
+
+    // Pick random hero image
+
+    const randomPhoto =
+    photos[Math.floor(Math.random() * photos.length)];
+
+
+
+    hero.style.backgroundImage = `
+
+    linear-gradient(
+
+        rgba(0,0,0,.45),
+
+        rgba(0,0,0,.85)
+
+    ),
+
+    url("./images/portfolio/${randomPhoto}")
+
+    `;
+
+
+
 })
+
 
 .catch(error => {
 
 
     console.error(
 
-        "Header background error:",
+        "Hero banner error:",
 
         error
 
@@ -107,13 +124,16 @@ fetch("./photos.json")
 
 
 
-    // Shuffle photos randomly
+    // Shuffle photos
 
     photos.sort(() => Math.random() - 0.5);
 
 
 
+    // Pick 3 photos
+
     const selected = photos.slice(0,3);
+
 
 
 
@@ -162,8 +182,7 @@ fetch("./photos.json")
 
 
 
-
-    // Reveal after images load
+    // Wait for images before showing
 
 
     const images = featured.querySelectorAll("img");
@@ -173,14 +192,13 @@ fetch("./photos.json")
 
 
 
-
-    function imageLoaded(){
+    function revealGallery(){
 
 
         loaded++;
 
 
-        if(loaded === images.length){
+        if(loaded >= images.length){
 
 
             featured.classList.add("show");
@@ -199,7 +217,7 @@ fetch("./photos.json")
 
 
 
-        img.onload = imageLoaded;
+        img.onload = revealGallery;
 
 
 
@@ -215,11 +233,10 @@ fetch("./photos.json")
             );
 
 
-            imageLoaded();
+            revealGallery();
 
 
         };
-
 
 
     });
@@ -227,7 +244,6 @@ fetch("./photos.json")
 
 
 })
-
 
 
 .catch(error => {
@@ -254,8 +270,8 @@ fetch("./photos.json")
 
 
 
+// ================= SCROLL ANIMATIONS =================
 
-// ================= SCROLL ANIMATION =================
 
 
 const hiddenElements = document.querySelectorAll(
@@ -275,22 +291,29 @@ if("IntersectionObserver" in window){
     const observer = new IntersectionObserver((entries)=>{
 
 
+
         entries.forEach(entry=>{
+
 
 
             if(entry.isIntersecting){
 
 
+
                 entry.target.classList.add("show");
+
 
 
                 observer.unobserve(entry.target);
 
 
+
             }
 
 
+
         });
+
 
 
     },{
@@ -305,10 +328,13 @@ if("IntersectionObserver" in window){
 
 
 
-    hiddenElements.forEach(element=>{
+
+    hiddenElements.forEach(element => {
+
 
 
         observer.observe(element);
+
 
 
     });
@@ -319,10 +345,12 @@ if("IntersectionObserver" in window){
 
 
 
-    hiddenElements.forEach(element=>{
+    hiddenElements.forEach(element => {
+
 
 
         element.classList.add("show");
+
 
 
     });
