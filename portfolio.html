@@ -11,28 +11,44 @@
 
 <title>SkyRise Visuals | Portfolio</title>
 
+
 <link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet" href="portfolio.css">
 
+
 </head>
+
 
 
 <body>
 
 
+
+<!-- ================= HEADER ================= -->
+
+
 <header>
 
+
 <div class="logo">
+
 SKYRISE <span>VISUALS</span>
+
 </div>
+
 
 
 <nav>
 
+
 <a href="index.html">
+
 Home
+
 </a>
+
+
 
 </nav>
 
@@ -43,105 +59,139 @@ Home
 
 
 
+
+
+
+
+<!-- ================= PORTFOLIO ================= -->
+
+
 <section class="portfolio-page">
 
 
+
 <h1>
+
 Portfolio
+
 </h1>
 
 
-<div class="photo-grid">
 
 
 
-<div class="photo-card">
-
-<img src="images/portfolio/photo1.jpg">
-
-
-<a class="download-btn"
-href="images/portfolio/photo1.jpg"
-download>
-
-Download
-
-</a>
+<div class="photo-grid" id="gallery">
 
 
 </div>
 
-
-
-
-
-<div class="photo-card">
-
-<img src="images/portfolio/photo2.jpg">
-
-
-<a class="download-btn"
-href="images/portfolio/photo2.jpg"
-download>
-
-Download
-
-</a>
-
-
-</div>
-
-
-
-
-
-
-<div class="photo-card">
-
-<img src="images/portfolio/photo3.jpg">
-
-
-<a class="download-btn"
-href="images/portfolio/photo3.jpg"
-download>
-
-Download
-
-</a>
-
-
-</div>
-
-
-
-
-
-<div class="photo-card">
-
-<img src="images/portfolio/photo4.jpg">
-
-
-<a class="download-btn"
-href="images/portfolio/photo4.jpg"
-download>
-
-Download
-
-</a>
-
-
-</div>
-
-
-
-
-</div>
 
 
 </section>
 
 
 
+
+
+
+
+
+
+<!-- ================= AUTO GALLERY SCRIPT ================= -->
+
+
+<script>
+
+
+const photos = [
+
+
+"photo1.jpg",
+
+"photo2.jpg",
+
+"photo3.jpg",
+
+"photo4.jpg",
+
+"photo5.jpg",
+
+"photo6.jpg",
+
+"photo7.jpg",
+
+"photo8.jpg",
+
+
+];
+
+
+
+
+const gallery = document.getElementById("gallery");
+
+
+
+
+
+photos.forEach(photo => {
+
+
+
+gallery.innerHTML += `
+
+
+<div class="photo-card">
+
+
+
+<img 
+
+src="images/portfolio/${photo}"
+
+alt="SkyRise Visuals Photography">
+
+
+
+
+
+<a 
+
+class="download-btn"
+
+href="images/portfolio/${photo}"
+
+download>
+
+
+
+Download
+
+
+
+</a>
+
+
+
+</div>
+
+
+
+`;
+
+
+
+});
+
+
+
+</script>
+
+
+
+
+
 </body>
+
 
 </html>
