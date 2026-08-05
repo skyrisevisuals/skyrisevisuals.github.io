@@ -1,0 +1,52 @@
+name: Build Photo Gallery
+
+on:
+  push:
+    paths:
+      - "images/portfolio/**"
+
+jobs:
+  build-gallery:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+
+    - name: Create photos.json
+      run: |
+        echo "[" > photos.json
+        
+        first=true
+        
+        for file in images/portfolio/*; do
+          filename=$(basename "$file")
+          
+          if [ "$first" = true ]; then
+            first=false
+          else
+            echo "," >> photos.json
+          fi
+          
+          echo "\"$filename\"" >> photos.json
+        done
+        
+        echo "]" >> photos.json
+
+
+    - name: Commit photos.json
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+        git add photos.json
+
+        git commit -m "Update photo gallery" || exit 0
+
+        git push
