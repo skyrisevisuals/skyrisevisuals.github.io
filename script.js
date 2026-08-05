@@ -1,39 +1,67 @@
+// ================= SCROLL FADE ANIMATIONS =================
+
+
 const hiddenElements = document.querySelectorAll(
     ".hidden, .hidden-left, .hidden-right"
 );
 
 
-const observer = new IntersectionObserver((entries)=>{
+
+if ("IntersectionObserver" in window) {
 
 
-    entries.forEach((entry)=>{
+    const observer = new IntersectionObserver((entries)=>{
 
 
-        if(entry.isIntersecting){
+        entries.forEach((entry)=>{
 
 
-            entry.target.classList.add("show");
+            if(entry.isIntersecting){
 
 
-            observer.unobserve(entry.target);
+                entry.target.classList.add("show");
 
 
-        }
+                observer.unobserve(entry.target);
+
+
+            }
+
+
+        });
+
+
+    },{
+
+        threshold:.15
+
+    });
+
+
+
+
+    hiddenElements.forEach((el)=>{
+
+
+        observer.observe(el);
 
 
     });
 
 
-},{
 
-    threshold:.15
-
-});
+} else {
 
 
+    // Fallback for older browsers
 
-hiddenElements.forEach((el)=>{
+    hiddenElements.forEach((el)=>{
 
-    observer.observe(el);
 
-});
+        el.classList.add("show");
+
+
+    });
+
+
+}
