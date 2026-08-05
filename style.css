@@ -1,14 +1,296 @@
-/* ================= FEATURED STACK ================= */
+/* ================= GLOBAL RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 
-.featured-showcase{
+html{
+    scroll-behavior:smooth;
+}
 
-    padding:120px 8%;
 
-    overflow:hidden;
+body{
+
+    background:#050505;
+
+    color:white;
+
+    font-family:Arial, Helvetica, sans-serif;
 
 }
 
+
+
+/* ================= HEADER ================= */
+
+
+header{
+
+    position:fixed;
+
+    top:0;
+
+    width:100%;
+
+    padding:30px 8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    z-index:1000;
+
+    background:rgba(0,0,0,.6);
+
+    backdrop-filter:blur(10px);
+
+}
+
+
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:800;
+
+}
+
+
+.logo span{
+
+    color:#aaa;
+
+}
+
+
+
+nav{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+
+
+
+
+/* ================= HERO ================= */
+
+
+.hero{
+
+    height:100vh;
+
+    background:
+
+    linear-gradient(
+    rgba(0,0,0,.5),
+    rgba(0,0,0,.8)
+    ),
+
+    url("./images/portfolio/DSC00334.JPG");
+
+
+    background-size:cover;
+
+    background-position:center;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 8%;
+
+}
+
+
+
+.hero-text{
+
+    max-width:700px;
+
+}
+
+
+
+.small{
+
+    letter-spacing:3px;
+
+    font-size:14px;
+
+}
+
+
+
+.hero h1{
+
+    font-size:90px;
+
+    line-height:.9;
+
+    margin:30px 0;
+
+}
+
+
+
+.hero p{
+
+    font-size:20px;
+
+    line-height:1.6;
+
+}
+
+
+
+
+
+/* ================= BUTTON ================= */
+
+
+.button{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:15px 35px;
+
+    background:white;
+
+    color:black;
+
+    text-decoration:none;
+
+    border-radius:50px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+
+
+.button:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
+
+
+
+/* ================= SECTIONS ================= */
+
+
+section{
+
+    padding:120px 8%;
+
+}
+
+
+
+h2{
+
+    font-size:50px;
+
+    margin-bottom:40px;
+
+}
+
+
+
+.about-text{
+
+    max-width:700px;
+
+    font-size:20px;
+
+    line-height:1.7;
+
+}
+
+
+
+
+
+/* ================= SCROLL ANIMATION ================= */
+
+
+.hidden{
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+    transition:1s ease;
+
+}
+
+
+
+.hidden-left{
+
+    opacity:0;
+
+    transform:translateX(-50px);
+
+    transition:1s ease;
+
+}
+
+
+
+.hidden-right{
+
+    opacity:0;
+
+    transform:translateX(50px);
+
+    transition:1s ease;
+
+}
+
+
+
+.show{
+
+    opacity:1;
+
+    transform:translate(0);
+
+}
+
+
+
+
+
+/* ================= FEATURED STACK ================= */
 
 
 .featured-stack{
@@ -27,9 +309,6 @@
 
 
 
-/* ================= ALL PHOTOS ================= */
-
-
 .feature-photo{
 
     position:absolute;
@@ -46,32 +325,20 @@
 
 
 
-/* ================= LEFT PHOTO ================= */
-
-
 .feature-photo.left{
 
     width:360px;
 
     height:500px;
 
-
     left:3%;
-
 
     top:170px;
 
-
     transform:rotate(-10deg);
-
-
-    z-index:2;
 
 }
 
-
-
-/* ================= CENTER PHOTO ================= */
 
 
 .feature-photo.center{
@@ -80,17 +347,12 @@
 
     height:650px;
 
-
     top:25px;
-
 
     z-index:4;
 
 }
 
-
-
-/* ================= RIGHT PHOTO ================= */
 
 
 .feature-photo.right{
@@ -99,56 +361,35 @@
 
     height:500px;
 
-
     right:3%;
-
 
     top:70px;
 
-
     transform:rotate(10deg);
 
+}
 
-    z-index:2;
+
+
+
+
+/* ================= FOOTER ================= */
+
+
+footer{
+
+    padding:40px;
+
+    text-align:center;
+
+    background:#000;
+
+    color:#888;
 
 }
 
 
 
-/* ================= HOVER ================= */
-
-
-.feature-photo:hover{
-
-    transform:scale(1.06) rotate(0deg);
-
-    z-index:5;
-
-}
-
-
-
-/* ================= FADE LOAD ================= */
-
-
-.featured-stack{
-
-    opacity:0;
-
-    transform:translateY(40px);
-
-    transition:1s ease;
-
-}
-
-
-.featured-stack.show{
-
-    opacity:1;
-
-    transform:translateY(0);
-
-}
 
 
 
@@ -158,9 +399,17 @@
 @media(max-width:900px){
 
 
-.featured-stack{
+.hero h1{
 
-    height:520px;
+    font-size:55px;
+
+}
+
+
+
+nav{
+
+    display:none;
 
 }
 
@@ -172,25 +421,11 @@
 
     height:400px;
 
-    top:40px;
-
 }
 
 
 
-.feature-photo.left{
-
-    width:180px;
-
-    height:290px;
-
-    left:-5%;
-
-    top:120px;
-
-}
-
-
+.feature-photo.left,
 
 .feature-photo.right{
 
@@ -198,11 +433,8 @@
 
     height:290px;
 
-    right:-5%;
-
-    top:80px;
-
 }
+
 
 
 }
