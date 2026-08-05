@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 
 <head>
 
@@ -11,18 +9,14 @@
 
 <title>SkyRise Visuals | Portfolio</title>
 
-
 <link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet" href="portfolio.css">
 
-
 </head>
 
 
-
 <body>
-
 
 
 <!-- ================= HEADER ================= -->
@@ -42,10 +36,9 @@ SKYRISE <span>VISUALS</span>
 <nav>
 
 <a href="index.html">
-
 Home
-
 </a>
+
 
 </nav>
 
@@ -66,61 +59,13 @@ Home
 <section class="portfolio-page">
 
 
-
 <h1>
-
 Portfolio
-
 </h1>
 
 
 
-
-<div <script>
-
-fetch("photos.json")
-
-.then(response => response.json())
-
-.then(photos => {
-
-
-const gallery = document.getElementById("gallery");
-
-
-photos.forEach(photo => {
-
-
-gallery.innerHTML += `
-
-
-<div class="photo-card">
-
-
-<img src="images/portfolio/${photo}">
-
-
-<a class="download-btn"
-href="images/portfolio/${photo}"
-download>
-
-Download
-
-</a>
-
-
-</div>
-
-
-`;
-
-});
-
-
-});
-
-
-</script>
+<div class="photo-grid" id="gallery">
 
 </div>
 
@@ -151,7 +96,6 @@ fetch("photos.json")
 .then(photos => {
 
 
-
 const gallery = document.getElementById("gallery");
 
 
@@ -166,14 +110,11 @@ gallery.innerHTML += `
 <div class="photo-card">
 
 
-
 <img
 
 src="images/portfolio/${photo}"
 
 alt="SkyRise Visuals Photography">
-
-
 
 
 
@@ -185,9 +126,7 @@ href="images/portfolio/${photo}"
 
 download>
 
-
 Download
-
 
 </a>
 
@@ -199,22 +138,17 @@ Download
 `;
 
 
-
 });
 
 
 })
 
 
-
 .catch(error => {
-
 
 console.error("Gallery loading error:", error);
 
-
 });
-
 
 
 </script>
@@ -224,6 +158,5 @@ console.error("Gallery loading error:", error);
 
 
 </body>
-
 
 </html>
