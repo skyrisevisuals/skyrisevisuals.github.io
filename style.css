@@ -5,13 +5,15 @@
 
     padding:120px 8%;
 
+    overflow:hidden;
+
 }
 
 
 
 .featured-stack{
 
-    height:650px;
+    height:700px;
 
     position:relative;
 
@@ -25,6 +27,8 @@
 
 
 
+
+
 .feature-photo{
 
     position:absolute;
@@ -35,116 +39,180 @@
 
     box-shadow:0 30px 60px rgba(0,0,0,.6);
 
-    transition:.5s;
+    transition:.5s ease;
 
 }
 
 
 
-/* LEFT */
+
+
+/* ================= LEFT PHOTO ================= */
 
 
 .feature-photo.left{
 
-    width:380px;
 
-    height:520px;
+    width:360px;
 
-    left:15%;
+    height:500px;
 
-    transform:rotate(-8deg);
 
-    z-index:1;
+    left:18%;
+
+    top:40px;
+
+
+    transform:rotate(-10deg);
+
+
+    z-index:2;
+
 
 }
 
 
 
-/* CENTER */
+
+
+
+
+/* ================= CENTER PHOTO ================= */
 
 
 .feature-photo.center{
+
 
     width:520px;
 
     height:650px;
 
-    z-index:3;
+
+    top:25px;
+
+
+    z-index:4;
+
 
 }
 
 
 
-/* RIGHT */
+
+
+
+
+/* ================= RIGHT PHOTO ================= */
 
 
 .feature-photo.right{
 
-    width:300px;
 
-    height:430px;
+    width:320px;
 
-    right:15%;
+    height:460px;
 
-    transform:rotate(8deg);
+
+    right:18%;
+
+    top:170px;
+
+
+    transform:rotate(10deg);
+
 
     z-index:1;
 
+
 }
 
+
+
+
+
+
+
+/* ================= HOVER EFFECT ================= */
 
 
 .feature-photo:hover{
 
-    transform:scale(1.05);
+
+    transform:scale(1.06) rotate(0deg);
 
     z-index:5;
+
 
 }
 
 
+
+
+
+
+
+/* ================= MOBILE ================= */
 
 
 @media(max-width:900px){
 
 
+
 .featured-stack{
 
-    height:450px;
+    height:500px;
 
 }
+
 
 
 
 .feature-photo.center{
 
+
     width:300px;
 
-    height:420px;
+    height:430px;
+
+
+    top:40px;
+
 
 }
+
 
 
 
 .feature-photo.left{
 
+
     width:220px;
 
     height:330px;
 
-    left:3%;
+
+    left:5%;
+
+    top:70px;
+
 
 }
 
 
 
+
 .feature-photo.right{
 
-    width:180px;
+
+    width:190px;
 
     height:280px;
 
-    right:3%;
+
+    right:5%;
+
+    top:170px;
+
 
 }
 
