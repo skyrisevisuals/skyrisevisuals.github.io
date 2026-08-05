@@ -1,236 +1,614 @@
-// ================= LOAD RANDOM PHOTO LIST =================
+/* ================= GLOBAL RESET ================= */
 
-fetch("./photos.json")
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-.then(response => {
 
-    if(!response.ok){
+html{
 
-        throw new Error("photos.json failed");
+    scroll-behavior:smooth;
 
-    }
+}
 
-    return response.json();
 
-})
-
-
-.then(photos => {
-
-
-    if(!photos || photos.length === 0){
-
-        console.error("No photos found");
-
-        return;
-
-    }
-
-
-
-    // ================= RANDOM PHOTO FUNCTION =================
-
-    function randomPhoto(){
-
-        return photos[
-            Math.floor(Math.random() * photos.length)
-        ];
-
-    }
-
-
-
-
-    // ================= RANDOM HEADER BACKGROUND =================
-
-
-    const header = document.querySelector("header");
-
-
-    if(header){
-
-
-        const photo = randomPhoto();
-
-
-        header.style.backgroundImage = `linear-gradient(
-            rgba(0,0,0,.75),
-            rgba(0,0,0,.75)
-        ),
-        url("./images/portfolio/${photo}")`;
-
-    }
-
-
-
-
-
-    // ================= RANDOM HERO BACKGROUND =================
-
-
-    const hero = document.querySelector(".hero");
-
-
-    if(hero){
-
-
-        const photo = randomPhoto();
-
-
-        hero.style.backgroundImage = `linear-gradient(
-            rgba(0,0,0,.5),
-            rgba(0,0,0,.85)
-        ),
-        url("./images/portfolio/${photo}")`;
-
-    }
-
-
-
-
-
-
-
-    // ================= RANDOM FEATURED STACK =================
-
-
-    const featured = document.getElementById("featured");
-
-
-    if(featured){
-
-
-        const shuffled = [...photos].sort(
-            () => Math.random() - 0.5
-        );
-
-
-        const selected = shuffled.slice(0,3);
-
-
-
-        featured.innerHTML = `
-
-
-        <img 
-        class="feature-photo left"
-        src="./images/portfolio/${selected[0]}"
-        alt="SkyRise Visuals">
-
-
-        <img 
-        class="feature-photo center"
-        src="./images/portfolio/${selected[1]}"
-        alt="SkyRise Visuals">
-
-
-        <img 
-        class="feature-photo right"
-        src="./images/portfolio/${selected[2]}"
-        alt="SkyRise Visuals">
-
-
-        `;
-
-
-
-        setTimeout(()=>{
-
-            featured.classList.add("show");
-
-        },300);
-
-
-    }
-
-
-})
-
-
-
-.catch(error=>{
-
-
-    console.error(
-        "Photo loading error:",
-        error
-    );
-
-
-});
-
-
-
-
-
-
-
-// ================= SCROLL ANIMATION =================
-
-
-const hiddenElements = document.querySelectorAll(
-    ".hidden, .hidden-left, .hidden-right"
-);
-
-
-
-if("IntersectionObserver" in window){
-
-
-    const observer = new IntersectionObserver((entries)=>{
-
-
-        entries.forEach(entry=>{
-
-
-            if(entry.isIntersecting){
-
-
-                entry.target.classList.add("show");
-
-
-                observer.unobserve(entry.target);
-
-
-            }
-
-
-        });
-
-
-    },{
-
-        threshold:.15
-
-    });
-
-
-
-    hiddenElements.forEach(element=>{
-
-
-        observer.observe(element);
-
-
-    });
-
-
-
-}else{
-
-
-    hiddenElements.forEach(element=>{
-
-
-        element.classList.add("show");
-
-
-    });
 html,
 body{
 
     background:#050505;
 
     color:white;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    min-height:100%;
+
+}
+
+
+/* ================= HEADER ================= */
+
+
+header{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    padding:30px 8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    z-index:1000;
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    backdrop-filter:blur(10px);
+
+    transition:.8s ease;
+
+}
+
+
+header::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    z-index:-1;
+
+}
+
+
+header > *{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+
+/* ================= LOGO ================= */
+
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+}
+
+
+.logo span{
+
+    color:#aaa;
+
+}
+
+
+
+
+
+/* ================= NAVIGATION ================= */
+
+
+nav{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s ease;
+
+}
+
+
+nav a:hover{
+
+    color:#aaa;
+
+}
+
+
+
+
+
+/* ================= HERO ================= */
+
+
+.hero{
+
+    height:100vh;
+
+    min-height:700px;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 8%;
+
+    background:
+
+    linear-gradient(
+        rgba(0,0,0,.5),
+        rgba(0,0,0,.85)
+    );
+
+    background-size:cover;
+
+    background-position:center;
+
+    transition:1s ease;
+
+}
+
+
+
+
+.hero-text{
+
+    max-width:750px;
+
+}
+
+
+
+
+.small{
+
+    letter-spacing:4px;
+
+    font-size:14px;
+
+    color:#ccc;
+
+}
+
+
+
+
+
+.hero h1{
+
+    font-size:90px;
+
+    line-height:.9;
+
+    margin:30px 0;
+
+}
+
+
+
+
+.hero p{
+
+    font-size:20px;
+
+    line-height:1.6;
+
+}
+
+
+
+
+
+/* ================= BUTTON ================= */
+
+
+.button{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:15px 35px;
+
+    background:white;
+
+    color:black;
+
+    text-decoration:none;
+
+    border-radius:50px;
+
+    font-weight:700;
+
+    transition:.3s ease;
+
+}
+
+
+.button:hover{
+
+    transform:translateY(-5px);
+
+    background:#ccc;
+
+}
+
+
+
+
+
+/* ================= SECTIONS ================= */
+
+
+section{
+
+    padding:120px 8%;
+
+}
+
+
+h2{
+
+    font-size:50px;
+
+    margin-bottom:40px;
+
+}
+
+
+
+
+.about-text{
+
+    max-width:700px;
+
+    font-size:20px;
+
+    line-height:1.7;
+
+}
+
+
+
+
+
+/* ================= SCROLL ANIMATIONS ================= */
+
+
+.hidden{
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+    transition:1s ease;
+
+}
+
+
+.hidden-left{
+
+    opacity:0;
+
+    transform:translateX(-50px);
+
+    transition:1s ease;
+
+}
+
+
+.hidden-right{
+
+    opacity:0;
+
+    transform:translateX(50px);
+
+    transition:1s ease;
+
+}
+
+
+
+.show{
+
+    opacity:1;
+
+    transform:translate(0);
+
+}
+
+
+
+
+
+/* ================= FEATURED SECTION ================= */
+
+
+.featured-showcase{
+
+    overflow:hidden;
+
+}
+
+
+
+.featured-stack{
+
+    height:700px;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:1s ease;
+
+}
+
+
+
+.featured-stack.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+
+
+/* ================= FEATURE PHOTOS ================= */
+
+
+.feature-photo{
+
+    position:absolute;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    box-shadow:
+
+    0 30px 60px rgba(0,0,0,.7);
+
+    transition:.5s ease;
+
+}
+
+
+
+
+.feature-photo.left{
+
+    width:360px;
+
+    height:500px;
+
+    left:3%;
+
+    top:170px;
+
+    transform:rotate(-10deg);
+
+    z-index:2;
+
+}
+
+
+
+
+.feature-photo.center{
+
+    width:520px;
+
+    height:650px;
+
+    top:25px;
+
+    z-index:4;
+
+}
+
+
+
+
+.feature-photo.right{
+
+    width:360px;
+
+    height:500px;
+
+    right:3%;
+
+    top:70px;
+
+    transform:rotate(10deg);
+
+    z-index:2;
+
+}
+
+
+
+
+.feature-photo:hover{
+
+    transform:scale(1.06) rotate(0deg);
+
+    z-index:5;
+
+}
+
+
+
+
+
+/* ================= CONTACT ================= */
+
+
+.contact-links{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+
+
+/* ================= FOOTER ================= */
+
+
+footer{
+
+    padding:40px;
+
+    text-align:center;
+
+    background:#000;
+
+    color:#888;
+
+}
+
+
+
+
+
+/* ================= MOBILE ================= */
+
+
+@media(max-width:900px){
+
+
+header{
+
+    padding:25px 5%;
+
+}
+
+
+.logo{
+
+    font-size:22px;
+
+}
+
+
+nav{
+
+    display:none;
+
+}
+
+
+
+.hero h1{
+
+    font-size:55px;
+
+}
+
+
+
+.hero p{
+
+    font-size:17px;
+
+}
+
+
+
+.featured-stack{
+
+    height:520px;
+
+}
+
+
+
+.feature-photo.center{
+
+    width:260px;
+
+    height:400px;
+
+}
+
+
+
+.feature-photo.left,
+.feature-photo.right{
+
+    width:180px;
+
+    height:290px;
+
+}
+
+
+.feature-photo.left{
+
+    left:-5%;
+
+}
+
+
+.feature-photo.right{
+
+    right:-5%;
+
+}
+
+
+h2{
+
+    font-size:40px;
+
+}
+
 
 }
