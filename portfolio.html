@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
 
 <meta charset="UTF-8">
@@ -15,13 +14,10 @@
 
 <link rel="stylesheet" href="portfolio.css">
 
-
 </head>
 
 
-
 <body>
-
 
 
 <!-- ================= HEADER ================= -->
@@ -41,9 +37,12 @@ SKYRISE <span>VISUALS</span>
 <nav>
 
 <a href="index.html">
-
 Home
+</a>
 
+
+<a href="contact.html">
+Contact
 </a>
 
 
@@ -66,13 +65,11 @@ Home
 <section class="portfolio-page">
 
 
-
 <h1 class="hidden">
 
 Portfolio
 
 </h1>
-
 
 
 
@@ -99,100 +96,7 @@ Portfolio
 <script>
 
 
-fetch("photos.json")
-
-
-.then(response => response.json())
-
-
-.then(photos => {
-
-
-
 const gallery = document.getElementById("gallery");
-
-
-
-photos.forEach(photo => {
-
-
-
-gallery.innerHTML += `
-
-
-<div class="photo-card hidden">
-
-
-
-<img
-
-src="images/portfolio/${photo}"
-
-alt="SkyRise Visuals Photography">
-
-
-
-
-
-
-<a
-
-class="download-btn"
-
-href="images/portfolio/${photo}"
-
-download>
-
-
-Download
-
-
-</a>
-
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-})
-
-
-.catch(error => {
-
-
-console.error("Gallery loading error:", error);
-
-
-});
-
-
-
-</script>
-
-
-
-
-
-
-
-
-
-<!-- ================= FADE UP ANIMATION ================= -->
-
-
-<script>
-
-
-const hiddenElements = document.querySelectorAll(
-".hidden, .hidden-left, .hidden-right"
-);
 
 
 
@@ -225,10 +129,86 @@ threshold:.15
 
 
 
-hiddenElements.forEach((el)=>{
 
 
-observer.observe(el);
+
+
+fetch("photos.json")
+
+
+.then(response => response.json())
+
+
+.then(photos => {
+
+
+
+photos.forEach(photo => {
+
+
+
+const card = document.createElement("div");
+
+
+card.className = "photo-card hidden";
+
+
+
+card.innerHTML = `
+
+
+<img
+
+src="images/portfolio/${photo}"
+
+alt="SkyRise Visuals Photography">
+
+
+
+
+
+<a
+
+class="download-btn"
+
+href="images/portfolio/${photo}"
+
+download>
+
+
+Download
+
+
+</a>
+
+
+
+`;
+
+
+
+gallery.appendChild(card);
+
+
+
+observer.observe(card);
+
+
+
+});
+
+
+
+})
+
+
+.catch(error => {
+
+
+console.error(
+"Gallery loading error:",
+error
+);
 
 
 });
