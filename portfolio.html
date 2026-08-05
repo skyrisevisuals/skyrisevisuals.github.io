@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <title>SkyRise Visuals | Portfolio</title>
+
 
 <link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet" href="portfolio.css">
 
+
 </head>
 
 
+
 <body>
+
+
+
 
 
 <!-- ================= HEADER ================= -->
@@ -33,6 +41,7 @@ SKYRISE <span>VISUALS</span>
 
 
 
+
 <nav>
 
 
@@ -46,10 +55,14 @@ Contact
 </a>
 
 
+
 </nav>
 
 
 </header>
+
+
+
 
 
 
@@ -62,11 +75,13 @@ Contact
 <section class="portfolio-page">
 
 
+
 <h1 class="hidden">
 
 Portfolio
 
 </h1>
+
 
 
 
@@ -86,7 +101,8 @@ Portfolio
 
 
 
-<!-- ================= AUTOMATIC PHOTO GALLERY ================= -->
+
+<!-- ================= SCRIPT ================= -->
 
 
 <script>
@@ -98,13 +114,13 @@ const gallery = document.getElementById("gallery");
 
 
 
-// ================= SCROLL FADE =================
+// ================= SCROLL ANIMATION =================
 
 
 const observer = new IntersectionObserver((entries)=>{
 
 
-entries.forEach((entry)=>{
+entries.forEach(entry=>{
 
 
 if(entry.isIntersecting){
@@ -135,19 +151,20 @@ threshold:.15
 
 
 
-// ================= LOAD PHOTOS =================
+
+// ================= AUTO LOAD PHOTOS =================
 
 
 fetch("photos.json")
 
 
-.then(response => {
+.then(response=>{
 
 
 if(!response.ok){
 
 
-throw new Error("photos.json could not load");
+throw new Error("photos.json failed");
 
 
 }
@@ -159,8 +176,7 @@ return response.json();
 })
 
 
-
-.then(photos => {
+.then(photos=>{
 
 
 
@@ -171,7 +187,9 @@ photos.forEach((photo,index)=>{
 const card = document.createElement("div");
 
 
-card.classList.add("photo-card");
+
+card.className = "photo-card";
+
 
 
 
@@ -184,7 +202,10 @@ src="images/portfolio/${photo}"
 
 alt="SkyRise Visuals Photography"
 
-loading="lazy">
+loading="lazy"
+
+onerror="this.src='images/missing.jpg'">
+
 
 
 
@@ -192,11 +213,11 @@ loading="lazy">
 
 <a
 
-class="download-btn"
-
 href="images/portfolio/${photo}"
 
-download>
+download
+
+class="download-btn">
 
 
 Download
@@ -205,7 +226,10 @@ Download
 </a>
 
 
+
 `;
+
+
 
 
 
@@ -215,7 +239,8 @@ gallery.appendChild(card);
 
 
 
-// stagger fade animation
+
+// stagger animation
 
 
 setTimeout(()=>{
@@ -224,7 +249,9 @@ setTimeout(()=>{
 observer.observe(card);
 
 
-}, index * 100);
+}, index * 120);
+
+
 
 
 
@@ -252,11 +279,13 @@ error
 
 
 
-
 </script>
 
 
 
+
+
 </body>
+
 
 </html>
