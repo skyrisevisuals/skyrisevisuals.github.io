@@ -56,9 +56,6 @@ Contact
 
 
 
-
-
-
 <!-- ================= PORTFOLIO ================= -->
 
 
@@ -88,9 +85,7 @@ Portfolio
 
 
 
-
-
-<!-- ================= AUTOMATIC GALLERY ================= -->
+<!-- ================= AUTOMATIC PHOTO GALLERY ================= -->
 
 
 <script>
@@ -100,10 +95,12 @@ const gallery = document.getElementById("gallery");
 
 
 
+// Scroll animation
+
 const observer = new IntersectionObserver((entries)=>{
 
 
-entries.forEach((entry)=>{
+entries.forEach(entry=>{
 
 
 if(entry.isIntersecting){
@@ -131,27 +128,40 @@ threshold:.15
 
 
 
+// Load photos automatically
 
 
 fetch("photos.json")
 
 
-.then(response => response.json())
+.then(response => {
+
+
+if(!response.ok){
+
+throw new Error("photos.json not found");
+
+}
+
+
+return response.json();
+
+
+})
 
 
 .then(photos => {
 
 
 
-photos.forEach((photo, index)=>{
+photos.forEach((photo,index)=>{
 
 
 
 const card = document.createElement("div");
 
 
-
-card.classList.add("photo-card");
+card.className = "photo-card";
 
 
 
@@ -162,10 +172,11 @@ card.innerHTML = `
 
 src="images/portfolio/${photo}"
 
-alt="SkyRise Visuals Photography">
+alt="SkyRise Visuals Photography"
 
+loading="lazy"
 
-
+onerror="this.style.display='none'">
 
 
 <a
@@ -183,8 +194,8 @@ Download
 </a>
 
 
-
 `;
+
 
 
 
@@ -194,13 +205,16 @@ gallery.appendChild(card);
 
 
 
+// stagger animation
+
+
 setTimeout(()=>{
 
 
 observer.observe(card);
 
 
-}, index * 100);
+}, index * 80);
 
 
 
@@ -211,7 +225,8 @@ observer.observe(card);
 })
 
 
-.catch(error => {
+
+.catch(error=>{
 
 
 console.error(
@@ -228,8 +243,6 @@ error
 
 
 </script>
-
-
 
 
 
