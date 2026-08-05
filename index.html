@@ -1,332 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SkyRise Visuals | Photography</title>
-
-
-<link rel="stylesheet" href="style.css">
-
-
-</head>
-
-
-<body>
-
-
-
-<!-- ================= HEADER ================= -->
-
-
-<header>
-
-
-<div class="logo">
-
-SKYRISE <span>VISUALS</span>
-
-</div>
-
-
-
-<nav>
-
-
-<a href="portfolio.html">
-
-Portfolio
-
-</a>
-
-
-
-<a href="#about">
-
-About
-
-</a>
-
-
-
-<a href="contact.html">
-
-Contact
-
-</a>
-
-
-
-</nav>
-
-
-</header>
-
-
-
-
-
-
-
-
-
-<!-- ================= HERO ================= -->
-
-
-<section class="hero">
-
-
-<div class="overlay"></div>
-
-
-
-<div class="hero-text hidden">
-
-
-
-<p class="small">
-
-PHOTOGRAPHY • VISUAL STORYTELLING • CREATIVE WORK
-
-</p>
-
-
-
-
-<h1>
-
-SkyRise<br>
-Visuals
-
-</h1>
-
-
-
-
-<p>
-
-Capturing unique perspectives through photography,
-creative visuals, and cinematic storytelling.
-
-</p>
-
-
-
-
-<a href="portfolio.html" class="button">
-
-VIEW PORTFOLIO
-
-</a>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= FEATURED RANDOM PHOTOS ================= -->
-
-
-<section class="featured-showcase">
-
-
-
-<h2 class="hidden">
-
-Featured Work
-
-</h2>
-
-
-
-
-<div class="featured-stack hidden" id="featured">
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= FULL GALLERY CTA ================= -->
-
-
-<section class="portfolio-cta hidden">
-
-
-<h2>
-
-Explore The Full Gallery
-
-</h2>
-
-
-
-<p class="about-text">
-
-View the complete SkyRise Visuals collection.
-Every photograph is available to view and download
-from the portfolio gallery.
-
-</p>
-
-
-
-<a href="portfolio.html" class="button">
-
-VIEW PORTFOLIO
-
-</a>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= ABOUT ================= -->
-
-
-<section id="about" class="hidden">
-
-
-<h2>
-
-About
-
-</h2>
-
-
-
-
-<p class="about-text">
-
-SkyRise Visuals creates cinematic photography
-focused on unique perspectives, automotive culture,
-and creative storytelling.
-
-</p>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= CONTACT ================= -->
-
-
-<section id="contact" class="hidden">
-
-
-<h2>
-
-Connect
-
-</h2>
-
-
-
-<div class="contact-links">
-
-
-
-<a class="button"
-href="contact.html">
-
-CONTACT
-
-</a>
-
-
-
-
-<a class="button"
-href="https://www.instagram.com/skyrisevisuals/"
-target="_blank">
-
-INSTAGRAM
-
-</a>
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= FOOTER ================= -->
-
-
-<footer>
-
-
-<p>
-
-© 2026 SkyRise Visuals. All Rights Reserved.
-
-</p>
-
-
-</footer>
-
-
-
-
-
-
-
-
-
-<!-- ================= RANDOM PHOTO SCRIPT ================= -->
-
-
 <script>
+
+
+// ================= RANDOM FEATURED PHOTOS =================
 
 
 fetch("photos.json")
@@ -339,48 +14,56 @@ fetch("photos.json")
 
 
 
-photos.sort(() => Math.random() - 0.5);
+    // shuffle photos
+
+    photos.sort(() => Math.random() - 0.5);
 
 
 
-const featured = document.getElementById("featured");
+    const featured = document.getElementById("featured");
 
 
 
-const selected = photos.slice(0,3);
+    const selected = photos.slice(0,3);
 
 
 
-featured.innerHTML = `
+    featured.innerHTML = `
 
 
 
-<img 
-class="feature-photo left"
-src="images/portfolio/${selected[0]}"
-alt="SkyRise Visuals Photography">
-
-
-
-
-
-<img 
-class="feature-photo center"
-src="images/portfolio/${selected[1]}"
-alt="SkyRise Visuals Photography">
+    <img 
+    class="feature-photo left"
+    src="images/portfolio/${selected[0]}"
+    alt="SkyRise Visuals Photography">
 
 
 
 
 
-<img 
-class="feature-photo right"
-src="images/portfolio/${selected[2]}"
-alt="SkyRise Visuals Photography">
+    <img 
+    class="feature-photo center"
+    src="images/portfolio/${selected[1]}"
+    alt="SkyRise Visuals Photography">
 
 
 
-`;
+
+
+    <img 
+    class="feature-photo right"
+    src="images/portfolio/${selected[2]}"
+    alt="SkyRise Visuals Photography">
+
+
+
+    `;
+
+
+
+    // activate fade after images load
+
+    featured.classList.add("show");
 
 
 
@@ -405,7 +88,8 @@ error
 
 
 
-// Fade animation
+// ================= FADE UP ANIMATION =================
+
 
 
 const hiddenElements = document.querySelectorAll(".hidden");
@@ -415,22 +99,29 @@ const hiddenElements = document.querySelectorAll(".hidden");
 const observer = new IntersectionObserver((entries)=>{
 
 
+
 entries.forEach((entry)=>{
+
 
 
 if(entry.isIntersecting){
 
 
+
 entry.target.classList.add("show");
+
 
 
 observer.unobserve(entry.target);
 
 
+
 }
 
 
+
 });
+
 
 
 },{
@@ -438,6 +129,8 @@ observer.unobserve(entry.target);
 threshold:.15
 
 });
+
+
 
 
 
@@ -452,11 +145,3 @@ observer.observe(el);
 
 
 </script>
-
-
-
-
-
-</body>
-
-</html>
