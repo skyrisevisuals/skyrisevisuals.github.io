@@ -29,6 +29,11 @@
 
 
 
+
+
+/* ================= ALL PHOTOS ================= */
+
+
 .feature-photo{
 
     position:absolute;
@@ -47,6 +52,8 @@
 
 
 
+
+
 /* ================= LEFT PHOTO ================= */
 
 
@@ -58,9 +65,9 @@
     height:500px;
 
 
-    left:18%;
+    left:16%;
 
-    top:40px;
+    top:10px;
 
 
     transform:rotate(-10deg);
@@ -108,14 +115,15 @@
 .feature-photo.right{
 
 
-    width:320px;
+    width:330px;
 
-    height:460px;
+    height:470px;
 
 
-    right:18%;
+    right:16%;
 
-    top:170px;
+
+    top:220px;
 
 
     transform:rotate(10deg);
@@ -167,6 +175,7 @@
 
 
 
+
 .feature-photo.center{
 
 
@@ -183,6 +192,7 @@
 
 
 
+
 .feature-photo.left{
 
 
@@ -191,9 +201,10 @@
     height:330px;
 
 
-    left:5%;
+    left:3%;
 
-    top:70px;
+
+    top:40px;
 
 
 }
@@ -201,15 +212,17 @@
 
 
 
+
 .feature-photo.right{
 
 
-    width:190px;
+    width:200px;
 
-    height:280px;
+    height:290px;
 
 
-    right:5%;
+    right:3%;
+
 
     top:170px;
 
