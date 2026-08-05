@@ -15,8 +15,17 @@
 
     margin-bottom:50px;
 
+    font-weight:800;
+
 }
 
+
+
+
+
+
+
+/* ================= PHOTO GRID ================= */
 
 
 .photo-grid{
@@ -31,6 +40,13 @@
 
 
 
+
+
+
+
+/* ================= PHOTO CARD ================= */
+
+
 .photo-card{
 
     position:relative;
@@ -40,6 +56,8 @@
     border-radius:18px;
 
     height:450px;
+
+    background:#111;
 
 }
 
@@ -53,7 +71,7 @@
 
     object-fit:cover;
 
-    transition:.5s;
+    transition:.6s ease;
 
 }
 
@@ -64,6 +82,10 @@
     transform:scale(1.08);
 
 }
+
+
+
+
 
 
 
@@ -78,21 +100,29 @@
 
     bottom:20px;
 
+
     background:white;
 
     color:black;
 
+
     padding:12px 25px;
+
 
     border-radius:30px;
 
+
     text-decoration:none;
+
 
     font-weight:600;
 
+
     font-size:14px;
 
-    transition:.3s;
+
+    transition:.3s ease;
+
 
 }
 
@@ -100,11 +130,42 @@
 
 .download-btn:hover{
 
-    background:#00aaff;
+    transform:translateY(-5px);
 
-    color:white;
+    background:#aaa;
 
 }
+
+
+
+
+
+
+
+/* ================= PHOTO FADE ANIMATION ================= */
+
+
+.photo-card.hidden{
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+    transition:1s ease;
+
+}
+
+
+
+.photo-card.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
 
 
 
@@ -131,6 +192,8 @@
 
 
 
+
+
 /* ================= MOBILE ================= */
 
 
@@ -148,6 +211,14 @@
 .portfolio-page h1{
 
     font-size:45px;
+
+}
+
+
+
+.photo-card{
+
+    height:400px;
 
 }
 
