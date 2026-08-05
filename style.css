@@ -19,7 +19,9 @@ body{
 }
 
 
-/* HEADER */
+
+/* ================= HEADER ================= */
+
 
 header{
 
@@ -27,22 +29,24 @@ header{
     top:0;
     width:100%;
     padding:30px 7%;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
-    z-index:10;
 
-    background:rgba(0,0,0,.35);
-    backdrop-filter:blur(10px);
+    z-index:100;
+
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(12px);
 
 }
 
 
 .logo{
 
-    font-weight:800;
-    letter-spacing:3px;
     font-size:20px;
+    font-weight:800;
+    letter-spacing:4px;
 
 }
 
@@ -59,11 +63,16 @@ nav a{
 
     color:white;
     text-decoration:none;
+
     margin-left:35px;
+
     font-size:14px;
+    letter-spacing:1px;
+
     transition:.3s;
 
 }
+
 
 
 nav a:hover{
@@ -74,18 +83,21 @@ nav a:hover{
 
 
 
+/* ================= HERO ================= */
 
-/* HERO SECTION */
 
 .hero{
 
     height:100vh;
 
     background:url("images/hero.jpg");
+
     background-size:cover;
+
     background-position:center;
 
     display:flex;
+
     align-items:center;
 
     position:relative;
@@ -97,13 +109,19 @@ nav a:hover{
 .overlay{
 
     position:absolute;
+
     inset:0;
 
     background:
+
     linear-gradient(
+
     90deg,
+
     rgba(0,0,0,.85),
+
     rgba(0,0,0,.25)
+
     );
 
 }
@@ -113,10 +131,12 @@ nav a:hover{
 .hero-text{
 
     position:relative;
+
     z-index:2;
 
     margin-left:8%;
-    max-width:700px;
+
+    max-width:750px;
 
 }
 
@@ -124,10 +144,13 @@ nav a:hover{
 
 .small{
 
-    letter-spacing:4px;
+    letter-spacing:5px;
+
     font-size:12px;
-    margin-bottom:30px;
+
     color:#ccc;
+
+    margin-bottom:30px;
 
 }
 
@@ -136,7 +159,9 @@ nav a:hover{
 h1{
 
     font-size:90px;
+
     line-height:.95;
+
     font-weight:800;
 
 }
@@ -146,16 +171,19 @@ h1{
 .hero p{
 
     margin:30px 0;
-    color:#ccc;
+
     font-size:18px;
+
+    color:#ccc;
+
     line-height:1.6;
 
 }
 
 
 
+/* ================= BUTTONS ================= */
 
-/* BUTTONS */
 
 .button{
 
@@ -164,11 +192,10 @@ h1{
     padding:15px 35px;
 
     background:white;
+
     color:black;
 
     text-decoration:none;
-
-    margin-right:15px;
 
     font-size:13px;
 
@@ -176,14 +203,18 @@ h1{
 
     letter-spacing:1px;
 
+    margin-right:15px;
+
     transition:.3s;
 
 }
 
 
+
 .button:hover{
 
     transform:translateY(-3px);
+
     opacity:.85;
 
 }
@@ -192,16 +223,18 @@ h1{
 
 .outline{
 
-    background:none;
-    border:1px solid white;
+    background:transparent;
+
     color:white;
+
+    border:1px solid white;
 
 }
 
 
 
+/* ================= SECTIONS ================= */
 
-/* GENERAL SECTIONS */
 
 section{
 
@@ -214,14 +247,16 @@ section{
 h2{
 
     font-size:50px;
-    margin-bottom:60px;
+
+    margin-bottom:50px;
 
 }
 
 
 
 
-/* PORTFOLIO */
+/* ================= PORTFOLIO ================= */
+
 
 .gallery{
 
@@ -239,9 +274,9 @@ h2{
 
     height:400px;
 
-    overflow:hidden;
-
     position:relative;
+
+    overflow:hidden;
 
 }
 
@@ -258,13 +293,14 @@ h2{
 .card img{
 
     width:100%;
+
     height:100%;
 
     object-fit:cover;
 
-    transition:.5s;
-
     display:block;
+
+    transition:.5s;
 
 }
 
@@ -294,14 +330,14 @@ h2{
 
 
 
+/* ================= FREE DOWNLOADS ================= */
 
-/* SERVICES */
 
-.services{
+.downloads{
 
     display:grid;
 
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
 
     gap:25px;
 
@@ -309,11 +345,13 @@ h2{
 
 
 
-.service{
+.download-card{
+
+    background:#0b0b0b;
 
     border:1px solid #222;
 
-    padding:35px;
+    padding:25px;
 
     transition:.3s;
 
@@ -321,7 +359,7 @@ h2{
 
 
 
-.service:hover{
+.download-card:hover{
 
     transform:translateY(-10px);
 
@@ -331,28 +369,52 @@ h2{
 
 
 
-.service p{
+.download-card img{
 
-    color:#aaa;
+    width:100%;
 
-    margin-top:20px;
+    height:250px;
 
-    line-height:1.5;
+    object-fit:cover;
+
+    margin-bottom:20px;
 
 }
 
 
 
+.download-card h3{
 
-/* ABOUT */
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.download-card p{
+
+    color:#aaa;
+
+    line-height:1.5;
+
+    margin-bottom:25px;
+
+}
+
+
+
+/* ================= ABOUT ================= */
+
 
 .about-text{
 
-    max-width:800px;
+    max-width:850px;
 
     font-size:30px;
 
-    line-height:1.5;
+    line-height:1.6;
 
     color:#ccc;
 
@@ -360,8 +422,8 @@ h2{
 
 
 
+/* ================= CONTACT ================= */
 
-/* CONTACT */
 
 #contact{
 
@@ -381,35 +443,15 @@ h2{
 
     flex-wrap:wrap;
 
-}
-
-
-
-
-/* SOCIAL LINKS */
-
-.socials{
-
-    display:flex;
-
-    gap:20px;
-
-}
-
-
-
-.socials a{
-
-    color:white;
-
-    text-decoration:none;
+    margin-top:30px;
 
 }
 
 
 
 
-/* FOOTER */
+/* ================= FOOTER ================= */
+
 
 footer{
 
@@ -443,8 +485,8 @@ footer a:hover{
 
 
 
+/* ================= MOBILE ================= */
 
-/* MOBILE */
 
 @media(max-width:900px){
 
@@ -452,14 +494,6 @@ footer a:hover{
 h1{
 
     font-size:55px;
-
-}
-
-
-.gallery,
-.services{
-
-    grid-template-columns:1fr;
 
 }
 
@@ -483,9 +517,33 @@ nav{
 
 
 
+.gallery{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.downloads{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
 .about-text{
 
     font-size:22px;
+
+}
+
+
+
+h2{
+
+    font-size:38px;
 
 }
 
@@ -504,16 +562,10 @@ nav{
 }
 
 
+
 .button{
 
     margin-bottom:15px;
-
-}
-
-
-h2{
-
-    font-size:38px;
 
 }
 
