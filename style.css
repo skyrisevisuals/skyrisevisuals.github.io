@@ -1,4 +1,4 @@
-// ================= LOAD RANDOM PHOTO LIST =================
+// ================= LOAD PHOTO LIST =================
 
 fetch("./photos.json")
 
@@ -16,13 +16,28 @@ fetch("./photos.json")
 .then(photos => {
 
 
-    if(!photos.length){
+    if(!photos || photos.length === 0){
+        console.error("No photos found");
         return;
     }
 
 
 
-    // ================= RANDOM HEADER =================
+    // ================= RANDOM PHOTO FUNCTION =================
+
+
+    function randomPhoto(){
+
+        return photos[
+            Math.floor(Math.random() * photos.length)
+        ];
+
+    }
+
+
+
+
+    // ================= RANDOM HEADER BACKGROUND =================
 
 
     const header = document.querySelector("header");
@@ -31,17 +46,19 @@ fetch("./photos.json")
     if(header){
 
 
-        const headerPhoto =
-        photos[Math.floor(Math.random() * photos.length)];
+        const headerPhoto = randomPhoto();
 
 
         header.style.backgroundImage = `linear-gradient(
             rgba(0,0,0,.75),
             rgba(0,0,0,.75)
         ),
-        url('./images/portfolio/${headerPhoto}')`;
+        url("./images/portfolio/${headerPhoto}")`;
+
 
     }
+
+
 
 
 
@@ -55,15 +72,14 @@ fetch("./photos.json")
     if(hero){
 
 
-        const heroPhoto =
-        photos[Math.floor(Math.random() * photos.length)];
+        const heroPhoto = randomPhoto();
 
 
         hero.style.backgroundImage = `linear-gradient(
-            rgba(0,0,0,.5),
+            rgba(0,0,0,.45),
             rgba(0,0,0,.85)
         ),
-        url('./images/portfolio/${heroPhoto}')`;
+        url("./images/portfolio/${heroPhoto}")`;
 
 
     }
@@ -73,7 +89,8 @@ fetch("./photos.json")
 
 
 
-    // ================= RANDOM FEATURED PHOTOS =================
+
+    // ================= RANDOM FEATURED STACK =================
 
 
     const featured = document.getElementById("featured");
@@ -82,9 +99,11 @@ fetch("./photos.json")
     if(featured){
 
 
+
         const shuffled = [...photos].sort(
-            () => Math.random() - .5
+            () => Math.random() - 0.5
         );
+
 
 
         const selected = shuffled.slice(0,3);
@@ -97,24 +116,28 @@ fetch("./photos.json")
         <img
         class="feature-photo left"
         src="./images/portfolio/${selected[0]}"
-        alt="SkyRise Visuals">
+        alt="SkyRise Visuals Photography">
+
 
 
         <img
         class="feature-photo center"
         src="./images/portfolio/${selected[1]}"
-        alt="SkyRise Visuals">
+        alt="SkyRise Visuals Photography">
+
 
 
         <img
         class="feature-photo right"
         src="./images/portfolio/${selected[2]}"
-        alt="SkyRise Visuals">
+        alt="SkyRise Visuals Photography">
 
 
         `;
 
 
+
+        // reveal animation
 
         setTimeout(()=>{
 
@@ -123,8 +146,8 @@ fetch("./photos.json")
         },300);
 
 
-    }
 
+    }
 
 
 })
@@ -148,66 +171,72 @@ fetch("./photos.json")
 
 
 
+
+
 // ================= SCROLL ANIMATION =================
 
 
-const hiddenElements =
-document.querySelectorAll(
-".hidden, .hidden-left, .hidden-right"
+const hiddenElements = document.querySelectorAll(
+    ".hidden, .hidden-left, .hidden-right"
 );
+
 
 
 
 if("IntersectionObserver" in window){
 
 
-const observer = new IntersectionObserver((entries)=>{
+
+    const observer = new IntersectionObserver((entries)=>{
 
 
-entries.forEach(entry=>{
+        entries.forEach(entry=>{
 
 
-    if(entry.isIntersecting){
+            if(entry.isIntersecting){
 
 
-        entry.target.classList.add("show");
+                entry.target.classList.add("show");
 
 
-        observer.unobserve(entry.target);
+                observer.unobserve(entry.target);
 
 
-    }
+            }
 
 
-});
+        });
 
 
-},{
-threshold:.15
-});
+    },{
+
+        threshold:.15
+
+    });
 
 
 
-hiddenElements.forEach(element=>{
+
+    hiddenElements.forEach(element=>{
 
 
-observer.observe(element);
+        observer.observe(element);
 
 
-});
+    });
 
 
 
 }else{
 
 
-hiddenElements.forEach(element=>{
+    hiddenElements.forEach(element=>{
 
 
-element.classList.add("show");
+        element.classList.add("show");
 
 
-});
+    });
 
 
 }
