@@ -11,9 +11,15 @@ html{
 
 
 body{
+
     font-family:Inter, Arial, sans-serif;
+
     background:#050505;
+
     color:white;
+
+    overflow-x:hidden;
+
 }
 
 
@@ -24,18 +30,23 @@ body{
 header{
 
     position:fixed;
+
     top:0;
+
     width:100%;
 
     padding:30px 7%;
 
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
     z-index:100;
 
     background:rgba(0,0,0,.45);
+
     backdrop-filter:blur(15px);
 
 }
@@ -45,10 +56,13 @@ header{
 .logo{
 
     font-size:20px;
+
     font-weight:800;
+
     letter-spacing:4px;
 
 }
+
 
 
 .logo span{
@@ -62,6 +76,7 @@ header{
 nav a{
 
     color:white;
+
     text-decoration:none;
 
     margin-left:35px;
@@ -81,6 +96,8 @@ nav a:hover{
     color:#aaa;
 
 }
+
+
 
 
 
@@ -114,10 +131,15 @@ nav a:hover{
     inset:0;
 
     background:
+
     linear-gradient(
+
     90deg,
+
     rgba(0,0,0,.85),
-    rgba(0,0,0,.25)
+
+    rgba(0,0,0,.3)
+
     );
 
 }
@@ -178,6 +200,8 @@ h1{
 
 
 
+
+
 /* ================= BUTTONS ================= */
 
 
@@ -199,6 +223,8 @@ h1{
 
     letter-spacing:1px;
 
+    margin-right:15px;
+
     transition:.3s;
 
 }
@@ -207,7 +233,7 @@ h1{
 
 .button:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-5px);
 
 }
 
@@ -222,6 +248,8 @@ h1{
     border:1px solid white;
 
 }
+
+
 
 
 
@@ -240,9 +268,11 @@ h2{
 
     font-size:50px;
 
-    margin-bottom:40px;
+    margin-bottom:45px;
 
 }
+
+
 
 
 
@@ -265,9 +295,9 @@ h2{
 
     height:400px;
 
-    position:relative;
-
     overflow:hidden;
+
+    border-radius:15px;
 
 }
 
@@ -297,30 +327,34 @@ h2{
 
 .card:hover img{
 
-    transform:scale(1.1);
+    transform:scale(1.08);
 
 }
 
 
-
-.card div{
-
-    position:absolute;
-
-    bottom:25px;
-
-    left:25px;
-
-    font-size:28px;
-
-}
 
 
 
 /* ================= DOWNLOADS ================= */
 
 
-.downloads{
+.downloads-section{
+
+    padding-top:80px;
+
+}
+
+
+
+.section-header{
+
+    margin-bottom:50px;
+
+}
+
+
+
+.downloads-grid{
 
     display:grid;
 
@@ -370,44 +404,46 @@ h2{
 
 
 
-.download-card h3{
+.download-content{
 
-    font-size:24px;
-
-    margin:25px 25px 10px;
+    padding:25px;
 
 }
 
 
 
-.download-card p{
+.download-content h3{
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.download-content p{
 
     color:#aaa;
 
     line-height:1.6;
 
-    margin:0 25px 25px;
+    margin-bottom:25px;
 
 }
 
 
 
-.download-card .button{
-
-    margin:0 25px 30px;
-
-}
 
 
+/* ================= FADE UP ANIMATION ================= */
 
-/* ================= SCROLL ANIMATION ================= */
 
-
-.reveal{
+.hidden{
 
     opacity:0;
 
-    transform:translateY(40px);
+    transform:translateY(50px);
 
     transition:1s ease;
 
@@ -415,13 +451,15 @@ h2{
 
 
 
-.reveal.show{
+.show{
 
     opacity:1;
 
     transform:translateY(0);
 
 }
+
+
 
 
 
@@ -439,6 +477,8 @@ h2{
     color:#ccc;
 
 }
+
+
 
 
 
@@ -467,6 +507,8 @@ h2{
 
 
 
+
+
 /* ================= FOOTER ================= */
 
 
@@ -482,14 +524,6 @@ footer{
 
 
 
-footer a{
-
-    color:white;
-
-    text-decoration:none;
-
-}
-
 
 
 /* ================= MOBILE ================= */
@@ -503,6 +537,7 @@ h1{
     font-size:55px;
 
 }
+
 
 
 nav{
@@ -521,7 +556,15 @@ nav{
 
 
 
-.downloads{
+.card.large{
+
+    height:400px;
+
+}
+
+
+
+.downloads-grid{
 
     grid-template-columns:1fr;
 
@@ -544,7 +587,10 @@ h2{
 }
 
 
+
 }
+
+
 
 
 
@@ -554,6 +600,14 @@ h2{
 .hero-text{
 
     margin:0 5%;
+
+}
+
+
+
+.hero p{
+
+    font-size:16px;
 
 }
 
