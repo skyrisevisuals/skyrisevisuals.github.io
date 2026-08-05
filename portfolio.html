@@ -76,7 +76,51 @@ Portfolio
 
 
 
-<div class="photo-grid" id="gallery">
+<div <script>
+
+fetch("photos.json")
+
+.then(response => response.json())
+
+.then(photos => {
+
+
+const gallery = document.getElementById("gallery");
+
+
+photos.forEach(photo => {
+
+
+gallery.innerHTML += `
+
+
+<div class="photo-card">
+
+
+<img src="images/portfolio/${photo}">
+
+
+<a class="download-btn"
+href="images/portfolio/${photo}"
+download>
+
+Download
+
+</a>
+
+
+</div>
+
+
+`;
+
+});
+
+
+});
+
+
+</script>
 
 </div>
 
