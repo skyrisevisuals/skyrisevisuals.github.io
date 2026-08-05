@@ -167,9 +167,9 @@
 
 .feature-photo.center{
 
-    width:300px;
+    width:220px;
 
-    height:430px;
+    height:330px;
 
     top:40px;
 
@@ -179,9 +179,9 @@
 
 .feature-photo.left{
 
-    width:220px;
+    width:1800px;
 
-    height:330px;
+    height:290px;
 
     left:-5%;
 
@@ -193,9 +193,9 @@
 
 .feature-photo.right{
 
-    width:220px;
+    width:180px;
 
-    height:330px;
+    height:290px;
 
     right:-5%;
 
