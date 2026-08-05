@@ -473,7 +473,39 @@ reveals.forEach(el => observer.observe(el));
 
 </script>
 
+<script>
 
+const photos = [
+
+"images/portfolio/car1.jpg",
+"images/portfolio/car2.jpg",
+"images/portfolio/drone1.jpg",
+"images/portfolio/drone2.jpg",
+"images/portfolio/city1.jpg",
+"images/portfolio/city2.jpg",
+"images/portfolio/sunset1.jpg",
+"images/portfolio/sunset2.jpg"
+
+];
+
+
+// Shuffle photos
+
+photos.sort(() => Math.random() - 0.5);
+
+
+// Assign random images
+
+document.getElementById("portfolio1").src = photos[0];
+
+document.getElementById("portfolio2").src = photos[1];
+
+document.getElementById("portfolio3").src = photos[2];
+
+document.getElementById("portfolio4").src = photos[3];
+
+
+</script>
 
 
 </body>
