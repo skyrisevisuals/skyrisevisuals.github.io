@@ -13,7 +13,7 @@
 
 .featured-stack{
 
-    height:700px;
+    height:750px;
 
     position:relative;
 
@@ -65,10 +65,10 @@
     height:500px;
 
 
-    left:8%;
+    left:-2%;
 
 
-    top:0;
+    top:40px;
 
 
     transform:rotate(-10deg);
@@ -121,16 +121,16 @@
     height:460px;
 
 
-    right:8%;
+    right:-2%;
 
 
-    top:230px;
+    top:260px;
 
 
     transform:rotate(10deg);
 
 
-    z-index:1;
+    z-index:2;
 
 
 }
@@ -170,7 +170,7 @@
 
 .featured-stack{
 
-    height:500px;
+    height:550px;
 
 }
 
@@ -195,6 +195,7 @@
 
 
 
+
 .feature-photo.left{
 
 
@@ -203,13 +204,14 @@
     height:330px;
 
 
-    left:0;
+    left:-20px;
 
 
-    top:40px;
+    top:60px;
 
 
 }
+
 
 
 
@@ -223,10 +225,10 @@
     height:280px;
 
 
-    right:0;
+    right:-20px;
 
 
-    top:190px;
+    top:200px;
 
 
 }
