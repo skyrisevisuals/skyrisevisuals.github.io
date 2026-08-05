@@ -1,6 +1,9 @@
+/* ================= PORTFOLIO PAGE ================= */
+
+
 .portfolio-page{
 
-padding:140px 8%;
+    padding:140px 8%;
 
 }
 
@@ -8,9 +11,9 @@ padding:140px 8%;
 
 .portfolio-page h1{
 
-font-size:70px;
+    font-size:70px;
 
-margin-bottom:50px;
+    margin-bottom:50px;
 
 }
 
@@ -18,11 +21,11 @@ margin-bottom:50px;
 
 .photo-grid{
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
 
-gap:30px;
+    gap:30px;
 
 }
 
@@ -30,13 +33,13 @@ gap:30px;
 
 .photo-card{
 
-position:relative;
+    position:relative;
 
-overflow:hidden;
+    overflow:hidden;
 
-border-radius:18px;
+    border-radius:18px;
 
-height:450px;
+    height:450px;
 
 }
 
@@ -44,13 +47,13 @@ height:450px;
 
 .photo-card img{
 
-width:100%;
+    width:100%;
 
-height:100%;
+    height:100%;
 
-object-fit:cover;
+    object-fit:cover;
 
-transition:.5s;
+    transition:.5s;
 
 }
 
@@ -58,38 +61,38 @@ transition:.5s;
 
 .photo-card:hover img{
 
-transform:scale(1.08);
+    transform:scale(1.08);
 
 }
 
 
 
-/* DOWNLOAD BUTTON */
+/* ================= DOWNLOAD BUTTON ================= */
 
 
 .download-btn{
 
-position:absolute;
+    position:absolute;
 
-right:20px;
+    right:20px;
 
-bottom:20px;
+    bottom:20px;
 
-background:white;
+    background:white;
 
-color:black;
+    color:black;
 
-padding:12px 25px;
+    padding:12px 25px;
 
-border-radius:30px;
+    border-radius:30px;
 
-text-decoration:none;
+    text-decoration:none;
 
-font-weight:600;
+    font-weight:600;
 
-font-size:14px;
+    font-size:14px;
 
-transition:.3s;
+    transition:.3s;
 
 }
 
@@ -97,14 +100,38 @@ transition:.3s;
 
 .download-btn:hover{
 
-background:#00aaff;
+    background:#00aaff;
 
-color:white;
+    color:white;
 
 }
 
 
 
+
+
+/* ================= PORTFOLIO CTA ================= */
+
+
+.portfolio-cta{
+
+    text-align:center;
+
+}
+
+
+
+.portfolio-cta .about-text{
+
+    margin:0 auto 40px;
+
+}
+
+
+
+
+
+/* ================= MOBILE ================= */
 
 
 @media(max-width:900px){
@@ -112,7 +139,7 @@ color:white;
 
 .photo-grid{
 
-grid-template-columns:1fr;
+    grid-template-columns:1fr;
 
 }
 
@@ -120,7 +147,7 @@ grid-template-columns:1fr;
 
 .portfolio-page h1{
 
-font-size:45px;
+    font-size:45px;
 
 }
 
