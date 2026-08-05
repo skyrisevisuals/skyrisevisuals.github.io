@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
 
 <meta charset="UTF-8">
@@ -12,19 +11,18 @@
 <title>SkyRise Visuals | Portfolio</title>
 
 
-<link rel="stylesheet" href="style.css">
+<link rel="icon" href="./favicon.ico">
 
-<link rel="stylesheet" href="portfolio.css">
+
+<link rel="stylesheet" href="./style.css">
+
+<link rel="stylesheet" href="./portfolio.css">
 
 
 </head>
 
 
-
 <body>
-
-
-
 
 
 <!-- ================= HEADER ================= -->
@@ -41,19 +39,17 @@ SKYRISE <span>VISUALS</span>
 
 
 
-
 <nav>
 
 
-<a href="index.html">
+<a href="./index.html">
 Home
 </a>
 
 
-<a href="contact.html">
+<a href="./contact.html">
 Contact
 </a>
-
 
 
 </nav>
@@ -68,12 +64,10 @@ Contact
 
 
 
-
 <!-- ================= PORTFOLIO ================= -->
 
 
 <section class="portfolio-page">
-
 
 
 <h1 class="hidden">
@@ -81,7 +75,6 @@ Contact
 Portfolio
 
 </h1>
-
 
 
 
@@ -101,191 +94,13 @@ Portfolio
 
 
 
-
 <!-- ================= SCRIPT ================= -->
 
 
-<script>
-
-
-const gallery = document.getElementById("gallery");
-
-
-
-
-
-// ================= SCROLL ANIMATION =================
-
-
-const observer = new IntersectionObserver((entries)=>{
-
-
-entries.forEach(entry=>{
-
-
-if(entry.isIntersecting){
-
-
-entry.target.classList.add("show");
-
-
-observer.unobserve(entry.target);
-
-
-}
-
-
-});
-
-
-},{
-
-threshold:.15
-
-});
-
-
-
-
-
-
-
-
-
-// ================= AUTO LOAD PHOTOS =================
-
-
-fetch("photos.json")
-
-
-.then(response=>{
-
-
-if(!response.ok){
-
-
-throw new Error("photos.json failed");
-
-
-}
-
-
-return response.json();
-
-
-})
-
-
-.then(photos=>{
-
-
-
-photos.forEach((photo,index)=>{
-
-
-
-const card = document.createElement("div");
-
-
-
-card.className = "photo-card";
-
-
-
-
-card.innerHTML = `
-
-
-<img
-
-src="images/portfolio/${photo}"
-
-alt="SkyRise Visuals Photography"
-
-loading="lazy"
-
-onerror="this.src='images/missing.jpg'">
-
-
-
-
-
-
-<a
-
-href="images/portfolio/${photo}"
-
-download
-
-class="download-btn">
-
-
-Download
-
-
-</a>
-
-
-
-`;
-
-
-
-
-
-gallery.appendChild(card);
-
-
-
-
-
-
-// stagger animation
-
-
-setTimeout(()=>{
-
-
-observer.observe(card);
-
-
-}, index * 120);
-
-
-
-
-
-});
-
-
-
-})
-
-
-
-.catch(error=>{
-
-
-console.error(
-
-"Gallery loading error:",
-
-error
-
-);
-
-
-});
-
-
-
-</script>
-
-
+<script src="./portfolio.js"></script>
 
 
 
 </body>
-
 
 </html>
