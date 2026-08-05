@@ -1,22 +1,15 @@
-<script>
-
-
 // ================= RANDOM FEATURED PHOTOS =================
-
 
 fetch("photos.json")
 
-
 .then(response => response.json())
-
 
 .then(photos => {
 
 
+    // Randomize photos
 
-    // Randomize photos every page load
-
-    photos = photos.sort(() => Math.random() - 0.5);
+    photos.sort(() => Math.random() - 0.5);
 
 
 
@@ -24,9 +17,9 @@ fetch("photos.json")
 
 
 
-    if (!featured) {
+    if(!featured){
 
-        console.error("Featured container missing");
+        console.error("Featured container not found");
 
         return;
 
@@ -36,45 +29,32 @@ fetch("photos.json")
 
     // Select 3 photos
 
-    const selectedPhotos = photos.slice(0,3);
+    const selected = photos.slice(0,3);
+
 
 
 
     featured.innerHTML = `
 
 
-
-        <img
-
-        class="feature-photo left"
-
-        src="images/portfolio/${selectedPhotos[0]}"
-
-        alt="SkyRise Visuals Photography">
+    <img 
+    class="feature-photo left"
+    src="images/portfolio/${selected[0]}"
+    alt="SkyRise Visuals Photography">
 
 
 
-
-
-        <img
-
-        class="feature-photo center"
-
-        src="images/portfolio/${selectedPhotos[1]}"
-
-        alt="SkyRise Visuals Photography">
+    <img 
+    class="feature-photo center"
+    src="images/portfolio/${selected[1]}"
+    alt="SkyRise Visuals Photography">
 
 
 
-
-
-        <img
-
-        class="feature-photo right"
-
-        src="images/portfolio/${selectedPhotos[2]}"
-
-        alt="SkyRise Visuals Photography">
+    <img 
+    class="feature-photo right"
+    src="images/portfolio/${selected[2]}"
+    alt="SkyRise Visuals Photography">
 
 
 
@@ -82,15 +62,7 @@ fetch("photos.json")
 
 
 
-    // Fade featured photos in
-
-    setTimeout(() => {
-
-
-        featured.classList.add("show");
-
-
-    },200);
+    featured.classList.add("show");
 
 
 
@@ -100,88 +72,10 @@ fetch("photos.json")
 .catch(error => {
 
 
-    console.error(
-
-        "Featured photo loading error:",
-
-        error
-
-    );
-
-
-});
-
-
-
-
-
-
-
-
-
-// ================= SCROLL FADE ANIMATIONS =================
-
-
-
-const hiddenElements = document.querySelectorAll(
-
-    ".hidden, .hidden-left, .hidden-right"
-
+console.error(
+"Featured gallery error:",
+error
 );
 
 
-
-
-
-const revealOnScroll = new IntersectionObserver((entries)=>{
-
-
-
-    entries.forEach((entry)=>{
-
-
-
-        if(entry.isIntersecting){
-
-
-
-            entry.target.classList.add("show");
-
-
-
-            revealOnScroll.unobserve(entry.target);
-
-
-
-        }
-
-
-
-    });
-
-
-
-},{
-
-    threshold:0.15
-
 });
-
-
-
-
-
-
-hiddenElements.forEach((element)=>{
-
-
-
-    revealOnScroll.observe(element);
-
-
-
-});
-
-
-
-</script>
