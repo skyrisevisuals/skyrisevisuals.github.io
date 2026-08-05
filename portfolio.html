@@ -9,7 +9,6 @@
 
 <title>SkyRise Visuals | Portfolio</title>
 
-
 <link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet" href="portfolio.css">
@@ -17,9 +16,7 @@
 </head>
 
 
-
 <body>
-
 
 
 <!-- ================= HEADER ================= -->
@@ -59,7 +56,6 @@ Contact
 
 
 
-
 <!-- ================= PORTFOLIO ================= -->
 
 
@@ -71,7 +67,6 @@ Contact
 Portfolio
 
 </h1>
-
 
 
 
@@ -91,7 +86,6 @@ Portfolio
 
 
 
-
 <!-- ================= AUTOMATIC PHOTO GALLERY ================= -->
 
 
@@ -103,53 +97,34 @@ const gallery = document.getElementById("gallery");
 
 
 
-// ================= SCROLL ANIMATION =================
 
-
-const hiddenElements = document.querySelectorAll(
-    ".hidden, .photo-card"
-);
-
+// ================= SCROLL FADE =================
 
 
 const observer = new IntersectionObserver((entries)=>{
 
 
-    entries.forEach((entry)=>{
+entries.forEach((entry)=>{
 
 
-        if(entry.isIntersecting){
+if(entry.isIntersecting){
 
 
-            entry.target.classList.add("show");
+entry.target.classList.add("show");
 
 
-            observer.unobserve(entry.target);
+observer.unobserve(entry.target);
 
 
-        }
+}
 
-
-    });
-
-
-
-},{
-
-    threshold:.15
 
 });
 
 
+},{
 
-
-
-
-hiddenElements.forEach((element)=>{
-
-
-    observer.observe(element);
-
+threshold:.15
 
 });
 
@@ -169,16 +144,16 @@ fetch("photos.json")
 .then(response => {
 
 
-    if(!response.ok){
+if(!response.ok){
 
 
-        throw new Error("photos.json failed loading");
+throw new Error("photos.json could not load");
 
 
-    }
+}
 
 
-    return response.json();
+return response.json();
 
 
 })
@@ -189,70 +164,71 @@ fetch("photos.json")
 
 
 
-    photos.forEach((photo,index)=>{
+photos.forEach((photo,index)=>{
 
 
 
-        const card = document.createElement("div");
+const card = document.createElement("div");
 
 
-        card.classList.add(
-            "photo-card"
-        );
-
-
-
-        card.innerHTML = `
-
-
-        <img
-
-        src="images/portfolio/${photo}"
-
-        alt="SkyRise Visuals Photography"
-
-        loading="lazy">
-
-
-        <a
-
-        class="download-btn"
-
-        href="images/portfolio/${photo}"
-
-        download>
-
-
-        Download
-
-
-        </a>
-
-
-        `;
+card.classList.add("photo-card");
 
 
 
-        gallery.appendChild(card);
+card.innerHTML = `
+
+
+<img
+
+src="images/portfolio/${photo}"
+
+alt="SkyRise Visuals Photography"
+
+loading="lazy">
 
 
 
 
 
-        // stagger reveal
+<a
+
+class="download-btn"
+
+href="images/portfolio/${photo}"
+
+download>
 
 
-        setTimeout(()=>{
+Download
 
 
-            observer.observe(card);
+</a>
 
 
-        }, index * 100);
+`;
 
 
 
-    });
+gallery.appendChild(card);
+
+
+
+
+
+// stagger fade animation
+
+
+setTimeout(()=>{
+
+
+observer.observe(card);
+
+
+}, index * 100);
+
+
+
+});
 
 
 
@@ -263,22 +239,21 @@ fetch("photos.json")
 .catch(error=>{
 
 
-    console.error(
+console.error(
 
-        "Gallery loading error:",
+"Gallery loading error:",
 
-        error
+error
 
-    );
+);
 
 
 });
 
 
 
+
 </script>
-
-
 
 
 
