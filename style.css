@@ -13,7 +13,7 @@
 
 .featured-stack{
 
-    height:700px;
+    height:750px;
 
     position:relative;
 
@@ -24,8 +24,6 @@
     align-items:center;
 
 }
-
-
 
 
 
@@ -65,10 +63,10 @@
     height:500px;
 
 
-    left:8%;
+    left:0;
 
 
-    top:120px;
+    top:160px;
 
 
     transform:rotate(-10deg);
@@ -121,10 +119,10 @@
     height:500px;
 
 
-    right:8%;
+    right:0;
 
 
-    top:80px;
+    top:60px;
 
 
     transform:rotate(10deg);
@@ -202,10 +200,10 @@
     height:330px;
 
 
-    left:0;
+    left:-25px;
 
 
-    top:100px;
+    top:130px;
 
 
 }
@@ -222,10 +220,10 @@
     height:330px;
 
 
-    right:0;
+    right:-25px;
 
 
-    top:70px;
+    top:90px;
 
 
 }
