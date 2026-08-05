@@ -1,4 +1,16 @@
+// ================= GET GALLERY =================
+
 const gallery = document.getElementById("gallery");
+
+
+// Stop if gallery does not exist
+
+if(!gallery){
+
+    console.error("Gallery container missing");
+
+}else{
+
 
 
 // ================= SCROLL ANIMATION =================
@@ -35,6 +47,8 @@ threshold:.15
 
 
 
+
+
 // ================= LOAD PHOTOS =================
 
 
@@ -60,13 +74,17 @@ return response.json();
 .then(photos=>{
 
 
+
 photos.forEach((photo,index)=>{
+
 
 
 const card = document.createElement("div");
 
 
 card.className = "photo-card";
+
+
 
 
 
@@ -83,13 +101,35 @@ img.loading = "lazy";
 
 
 
+img.onerror = ()=>{
+
+
+console.error(
+
+"Missing image:",
+
+img.src
+
+);
+
+
+card.remove();
+
+
+};
+
+
+
+
+
+
 const button = document.createElement("a");
 
 
 button.href = `./images/portfolio/${photo}`;
 
 
-button.download = "";
+button.download = photo;
 
 
 button.className = "download-btn";
@@ -99,15 +139,24 @@ button.textContent = "Download";
 
 
 
+
+
 card.appendChild(img);
 
+
 card.appendChild(button);
+
 
 
 
 gallery.appendChild(card);
 
 
+
+
+
+
+// stagger animation
 
 
 setTimeout(()=>{
@@ -120,7 +169,10 @@ observer.observe(card);
 
 
 
+
+
 });
+
 
 
 })
@@ -130,9 +182,16 @@ observer.observe(card);
 
 
 console.error(
+
 "Gallery loading error:",
+
 error
+
 );
 
 
 });
+
+
+
+}
