@@ -41,14 +41,11 @@ SKYRISE <span>VISUALS</span>
 
 <nav>
 
-
 <a href="index.html">
 
 Home
 
 </a>
-
-
 
 </nav>
 
@@ -79,9 +76,7 @@ Portfolio
 
 
 
-
 <div class="photo-grid" id="gallery">
-
 
 </div>
 
@@ -97,40 +92,23 @@ Portfolio
 
 
 
-<!-- ================= AUTO GALLERY SCRIPT ================= -->
+<!-- ================= AUTOMATIC GALLERY ================= -->
 
 
 <script>
 
 
-const photos = [
+fetch("photos.json")
 
 
-"photo1.jpg",
-
-"photo2.jpg",
-
-"photo3.jpg",
-
-"photo4.jpg",
-
-"photo5.jpg",
-
-"photo6.jpg",
-
-"photo7.jpg",
-
-"photo8.jpg",
+.then(response => response.json())
 
 
-];
-
+.then(photos => {
 
 
 
 const gallery = document.getElementById("gallery");
-
-
 
 
 
@@ -145,7 +123,7 @@ gallery.innerHTML += `
 
 
 
-<img 
+<img
 
 src="images/portfolio/${photo}"
 
@@ -155,7 +133,7 @@ alt="SkyRise Visuals Photography">
 
 
 
-<a 
+<a
 
 class="download-btn"
 
@@ -164,9 +142,7 @@ href="images/portfolio/${photo}"
 download>
 
 
-
 Download
-
 
 
 </a>
@@ -176,9 +152,21 @@ Download
 </div>
 
 
-
 `;
 
+
+
+});
+
+
+})
+
+
+
+.catch(error => {
+
+
+console.error("Gallery loading error:", error);
 
 
 });
