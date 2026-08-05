@@ -1,11 +1,13 @@
-// ================= LOAD PHOTO LIST =================
+// ================= LOAD RANDOM PHOTO LIST =================
 
 fetch("./photos.json")
 
 .then(response => {
 
     if(!response.ok){
+
         throw new Error("photos.json failed");
+
     }
 
     return response.json();
@@ -17,14 +19,16 @@ fetch("./photos.json")
 
 
     if(!photos || photos.length === 0){
+
         console.error("No photos found");
+
         return;
+
     }
 
 
 
     // ================= RANDOM PHOTO FUNCTION =================
-
 
     function randomPhoto(){
 
@@ -46,15 +50,14 @@ fetch("./photos.json")
     if(header){
 
 
-        const headerPhoto = randomPhoto();
+        const photo = randomPhoto();
 
 
         header.style.backgroundImage = `linear-gradient(
             rgba(0,0,0,.75),
             rgba(0,0,0,.75)
         ),
-        url("./images/portfolio/${headerPhoto}")`;
-
+        url("./images/portfolio/${photo}")`;
 
     }
 
@@ -62,8 +65,7 @@ fetch("./photos.json")
 
 
 
-
-    // ================= RANDOM HERO BANNER =================
+    // ================= RANDOM HERO BACKGROUND =================
 
 
     const hero = document.querySelector(".hero");
@@ -72,15 +74,14 @@ fetch("./photos.json")
     if(hero){
 
 
-        const heroPhoto = randomPhoto();
+        const photo = randomPhoto();
 
 
         hero.style.backgroundImage = `linear-gradient(
-            rgba(0,0,0,.45),
+            rgba(0,0,0,.5),
             rgba(0,0,0,.85)
         ),
-        url("./images/portfolio/${heroPhoto}")`;
-
+        url("./images/portfolio/${photo}")`;
 
     }
 
@@ -99,11 +100,9 @@ fetch("./photos.json")
     if(featured){
 
 
-
         const shuffled = [...photos].sort(
             () => Math.random() - 0.5
         );
-
 
 
         const selected = shuffled.slice(0,3);
@@ -113,38 +112,33 @@ fetch("./photos.json")
         featured.innerHTML = `
 
 
-        <img
+        <img 
         class="feature-photo left"
         src="./images/portfolio/${selected[0]}"
-        alt="SkyRise Visuals Photography">
+        alt="SkyRise Visuals">
 
 
-
-        <img
+        <img 
         class="feature-photo center"
         src="./images/portfolio/${selected[1]}"
-        alt="SkyRise Visuals Photography">
+        alt="SkyRise Visuals">
 
 
-
-        <img
+        <img 
         class="feature-photo right"
         src="./images/portfolio/${selected[2]}"
-        alt="SkyRise Visuals Photography">
+        alt="SkyRise Visuals">
 
 
         `;
 
 
 
-        // reveal animation
-
         setTimeout(()=>{
 
             featured.classList.add("show");
 
         },300);
-
 
 
     }
@@ -171,8 +165,6 @@ fetch("./photos.json")
 
 
 
-
-
 // ================= SCROLL ANIMATION =================
 
 
@@ -182,9 +174,7 @@ const hiddenElements = document.querySelectorAll(
 
 
 
-
 if("IntersectionObserver" in window){
-
 
 
     const observer = new IntersectionObserver((entries)=>{
@@ -213,7 +203,6 @@ if("IntersectionObserver" in window){
         threshold:.15
 
     });
-
 
 
 
