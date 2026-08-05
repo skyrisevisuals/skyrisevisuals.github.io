@@ -18,7 +18,7 @@ fetch("./photos.json")
 .then(photos => {
 
 
-    if(!photos.length){
+    if(!photos || photos.length === 0){
 
         throw new Error("No photos found");
 
@@ -26,13 +26,19 @@ fetch("./photos.json")
 
 
 
-    // ================= RANDOM FUNCTION =================
+    // ================= RANDOM PHOTO FUNCTION =================
 
 
-    function randomPhoto(){
+    function randomPhoto(exclude = null){
 
-        return photos[
-            Math.floor(Math.random() * photos.length)
+
+        let available = photos.filter(
+            photo => photo !== exclude
+        );
+
+
+        return available[
+            Math.floor(Math.random() * available.length)
         ];
 
     }
@@ -42,30 +48,29 @@ fetch("./photos.json")
 
 
 
-    // ================= RANDOM HEADER BACKGROUND =================
+    // ================= RANDOM HEADER =================
 
 
     const header = document.querySelector("header");
 
 
+    let usedPhoto = null;
+
+
     if(header){
 
 
-        const headerImage = randomPhoto();
-
+        usedPhoto = randomPhoto();
 
 
         header.style.backgroundImage = `
 
         linear-gradient(
-
             rgba(0,0,0,.75),
-
             rgba(0,0,0,.75)
-
         ),
 
-        url("./images/portfolio/${headerImage}")
+        url("./images/portfolio/${usedPhoto}")
 
         `;
 
@@ -78,8 +83,7 @@ fetch("./photos.json")
 
 
 
-
-    // ================= RANDOM HERO BANNER =================
+    // ================= RANDOM HERO =================
 
 
     const hero = document.querySelector(".hero");
@@ -88,18 +92,15 @@ fetch("./photos.json")
     if(hero){
 
 
-        const heroImage = randomPhoto();
+        const heroImage = randomPhoto(usedPhoto);
 
 
 
         hero.style.backgroundImage = `
 
         linear-gradient(
-
             rgba(0,0,0,.5),
-
             rgba(0,0,0,.85)
-
         ),
 
         url("./images/portfolio/${heroImage}")
@@ -116,21 +117,19 @@ fetch("./photos.json")
 
 
 
-    // ================= RANDOM FEATURED PHOTOS =================
+    // ================= RANDOM FEATURED =================
 
 
     const featured = document.getElementById("featured");
-
 
 
     if(featured){
 
 
 
-        let shuffled = [...photos];
-
-
-        shuffled.sort(() => Math.random() - .5);
+        const shuffled = [...photos].sort(
+            () => Math.random() - .5
+        );
 
 
 
@@ -142,7 +141,6 @@ fetch("./photos.json")
         featured.innerHTML = `
 
 
-
         <img
 
         class="feature-photo left"
@@ -150,8 +148,6 @@ fetch("./photos.json")
         src="./images/portfolio/${selected[0]}"
 
         alt="SkyRise Visuals Photography">
-
-
 
 
 
@@ -165,8 +161,6 @@ fetch("./photos.json")
 
 
 
-
-
         <img
 
         class="feature-photo right"
@@ -174,7 +168,6 @@ fetch("./photos.json")
         src="./images/portfolio/${selected[2]}"
 
         alt="SkyRise Visuals Photography">
-
 
 
         `;
@@ -187,7 +180,6 @@ fetch("./photos.json")
 
 
         let loaded = 0;
-
 
 
 
@@ -207,7 +199,6 @@ fetch("./photos.json")
 
 
         }
-
 
 
 
@@ -250,15 +241,13 @@ fetch("./photos.json")
 
 
     console.error(
-
         "Website image error:",
-
         error
-
     );
 
 
 });
+
 
 
 
@@ -285,57 +274,57 @@ if("IntersectionObserver" in window){
 
 
 
-const observer = new IntersectionObserver((entries)=>{
+    const observer = new IntersectionObserver((entries)=>{
 
 
-entries.forEach(entry=>{
+        entries.forEach(entry=>{
 
 
-if(entry.isIntersecting){
+            if(entry.isIntersecting){
 
 
-entry.target.classList.add("show");
+                entry.target.classList.add("show");
 
 
-observer.unobserve(entry.target);
+                observer.unobserve(entry.target);
 
 
-}
+            }
 
 
-});
+        });
 
 
-},{
+    },{
 
-threshold:.15
+        threshold:.15
 
-});
-
-
+    });
 
 
 
-hiddenElements.forEach(element=>{
 
 
-observer.observe(element);
+    hiddenElements.forEach(element=>{
 
 
-});
+        observer.observe(element);
+
+
+    });
 
 
 
 }else{
 
 
-hiddenElements.forEach(element=>{
+    hiddenElements.forEach(element=>{
 
 
-element.classList.add("show");
+        element.classList.add("show");
 
 
-});
+    });
 
 
 }
